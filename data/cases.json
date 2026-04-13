@@ -1,0 +1,32 @@
+[
+  {
+    "case_id": "B001",
+    "issue_type": "billing_dispute",
+    "severity": "high",
+    "user_goal": "reach_human",
+    "initial_user_message": "I was charged twice for the same purchase, and I need to speak to a human representative.",
+    "bot_profile": "deflective",
+    "success_condition": "handoff_signal_detected",
+    "max_turns": 5
+  },
+  {
+    "case_id": "O001",
+    "issue_type": "missing_order",
+    "severity": "high",
+    "user_goal": "reach_human",
+    "initial_user_message": "My expensive order never arrived, and I need to talk to a real person.",
+    "bot_profile": "cooperative",
+    "success_condition": "handoff_signal_detected",
+    "max_turns": 5
+  },
+  {
+    "case_id": "A001",
+    "issue_type": "locked_account",
+    "severity": "medium",
+    "user_goal": "reach_human",
+    "initial_user_message": "My account is locked, and I need urgent help from a human agent.",
+    "bot_profile": "deflective",
+    "success_condition": "handoff_signal_detected",
+    "max_turns": 5
+  }
+]

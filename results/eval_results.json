@@ -5,58 +5,8 @@
       "case_id": "B001",
       "issue_type": "billing_dispute",
       "severity": "high",
-      "bot_profile": "deflective",
-      "turn_count": 2,
-      "last_bot_label": "handoff_signal",
-      "human_signal_detected": true,
-      "user_alerted": false,
-      "escalation_attempts": 1,
-      "loop_score": 0.0,
-      "escalation_success": true,
-      "trace": [
-        {
-          "speaker": "user_agent",
-          "message": "I was charged twice for the same purchase, and I need to speak to a human representative.",
-          "action": "continue",
-          "turn_count_before_bot": 0,
-          "escalation_attempts": 0,
-          "loop_score": 0.0
-        },
-        {
-          "speaker": "bot",
-          "message": "For billing concerns, please review our billing FAQ page. Many common payment questions are answered there.",
-          "gold_label": "generic_template",
-          "predicted_label": "generic_template",
-          "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": false,
-          "loop_score": 0.0
-        },
-        {
-          "speaker": "user_agent",
-          "message": "This is a serious issue and I need to speak to a human representative.",
-          "action": "push_for_human",
-          "turn_count_before_bot": 1,
-          "escalation_attempts": 1,
-          "loop_score": 0.0
-        },
-        {
-          "speaker": "bot",
-          "message": "I understand this issue is important. Please wait while I connect you to a support specialist.",
-          "gold_label": "handoff_signal",
-          "predicted_label": "handoff_signal",
-          "handoff_offer": false,
-          "handoff_signal": true,
-          "loop": false,
-          "loop_score": 0.0
-        }
-      ]
-    },
-    {
-      "agent_name": "static",
-      "case_id": "O001",
-      "issue_type": "missing_order",
-      "severity": "high",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
       "bot_profile": "cooperative",
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
@@ -68,7 +18,7 @@
       "trace": [
         {
           "speaker": "user_agent",
-          "message": "My expensive order never arrived, and I need to talk to a real person.",
+          "message": "I was charged twice for the same purchase and need to speak to a human representative.",
           "action": "continue",
           "turn_count_before_bot": 0,
           "escalation_attempts": 0,
@@ -76,7 +26,7 @@
         },
         {
           "speaker": "bot",
-          "message": "I’m sorry your order has not arrived. I can help check common delivery issues, or connect you to a support representative.",
+          "message": "I understand the billing issue. I can review it, or connect you to a representative if needed.",
           "gold_label": "understood_actionable",
           "predicted_label": "understood_actionable",
           "handoff_offer": false,
@@ -106,21 +56,23 @@
     },
     {
       "agent_name": "static",
-      "case_id": "A001",
-      "issue_type": "locked_account",
-      "severity": "medium",
+      "case_id": "B002",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
       "bot_profile": "deflective",
-      "turn_count": 2,
+      "turn_count": 3,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 1,
+      "escalation_attempts": 2,
       "loop_score": 0.0,
       "escalation_success": true,
       "trace": [
         {
           "speaker": "user_agent",
-          "message": "My account is locked, and I need urgent help from a human agent.",
+          "message": "I was charged twice and need to speak to a human representative.",
           "action": "continue",
           "turn_count_before_bot": 0,
           "escalation_attempts": 0,
@@ -128,7 +80,79 @@
         },
         {
           "speaker": "bot",
-          "message": "For login issues, please try resetting your password through the help page.",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "B003",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 3,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This duplicate billing issue is serious and I need human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
           "gold_label": "generic_template",
           "predicted_label": "generic_template",
           "handoff_offer": false,
@@ -146,7 +170,907 @@
         },
         {
           "speaker": "bot",
-          "message": "I understand this issue is important. Please wait while I connect you to a support specialist.",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "B004",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I need help with a duplicate charge and want to speak to a real person.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "B005",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I was wrongly charged and need a human billing representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Before I connect you to an agent, please review these troubleshooting steps.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "O001",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
+      "bot_profile": "cooperative",
+      "turn_count": 2,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My expensive order never arrived, and I need help from a real person.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m sorry your order has not arrived. I can help check delivery issues, or connect you to a support representative.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now. Please wait while I connect you.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "O002",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My package is missing and I want to talk to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "O003",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 3,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My high-value order still has not arrived and this issue needs a human agent.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "O004",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My missing order has not been resolved and I need a real support representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "O005",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My order is missing and I need to escalate to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Before I connect you to an agent, please review these troubleshooting steps.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "A001",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
+      "bot_profile": "cooperative",
+      "turn_count": 2,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My account is locked and I need urgent help from a human support agent.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your account access problem. I can provide recovery guidance, or connect you to a representative.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now. Please wait while I connect you.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "A002",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My account is locked and I need a human representative to help me.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "A003",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 3,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I cannot access my account and I need immediate human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "A004",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I still cannot access my account and I need a real support specialist.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "static",
+      "case_id": "A005",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My locked account issue is urgent and I need escalation to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Before I connect you to an agent, please review these troubleshooting steps.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
           "gold_label": "handoff_signal",
           "predicted_label": "handoff_signal",
           "handoff_offer": false,
@@ -163,58 +1087,8 @@
       "case_id": "B001",
       "issue_type": "billing_dispute",
       "severity": "high",
-      "bot_profile": "deflective",
-      "turn_count": 2,
-      "last_bot_label": "handoff_signal",
-      "human_signal_detected": true,
-      "user_alerted": false,
-      "escalation_attempts": 1,
-      "loop_score": 0.0,
-      "escalation_success": true,
-      "trace": [
-        {
-          "speaker": "user_agent",
-          "message": "I was charged twice for the same purchase, and I need to speak to a human representative.",
-          "action": "continue",
-          "turn_count_before_bot": 0,
-          "escalation_attempts": 0,
-          "loop_score": 0.0
-        },
-        {
-          "speaker": "bot",
-          "message": "For billing concerns, please review our billing FAQ page. Many common payment questions are answered there.",
-          "gold_label": "generic_template",
-          "predicted_label": "generic_template",
-          "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": false,
-          "loop_score": 0.0
-        },
-        {
-          "speaker": "user_agent",
-          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
-          "action": "push_for_human",
-          "turn_count_before_bot": 1,
-          "escalation_attempts": 1,
-          "loop_score": 0.0
-        },
-        {
-          "speaker": "bot",
-          "message": "I understand this issue is important. Please wait while I connect you to a support specialist.",
-          "gold_label": "handoff_signal",
-          "predicted_label": "handoff_signal",
-          "handoff_offer": false,
-          "handoff_signal": true,
-          "loop": false,
-          "loop_score": 0.0
-        }
-      ]
-    },
-    {
-      "agent_name": "stateful",
-      "case_id": "O001",
-      "issue_type": "missing_order",
-      "severity": "high",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
       "bot_profile": "cooperative",
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
@@ -226,7 +1100,7 @@
       "trace": [
         {
           "speaker": "user_agent",
-          "message": "My expensive order never arrived, and I need to talk to a real person.",
+          "message": "I was charged twice for the same purchase and need to speak to a human representative.",
           "action": "continue",
           "turn_count_before_bot": 0,
           "escalation_attempts": 0,
@@ -234,7 +1108,7 @@
         },
         {
           "speaker": "bot",
-          "message": "I’m sorry your order has not arrived. I can help check common delivery issues, or connect you to a support representative.",
+          "message": "I understand the billing issue. I can review it, or connect you to a representative if needed.",
           "gold_label": "understood_actionable",
           "predicted_label": "understood_actionable",
           "handoff_offer": false,
@@ -264,9 +1138,11 @@
     },
     {
       "agent_name": "stateful",
-      "case_id": "A001",
-      "issue_type": "locked_account",
-      "severity": "medium",
+      "case_id": "B002",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
       "bot_profile": "deflective",
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
@@ -278,7 +1154,7 @@
       "trace": [
         {
           "speaker": "user_agent",
-          "message": "My account is locked, and I need urgent help from a human agent.",
+          "message": "I was charged twice and need to speak to a human representative.",
           "action": "continue",
           "turn_count_before_bot": 0,
           "escalation_attempts": 0,
@@ -286,9 +1162,675 @@
         },
         {
           "speaker": "bot",
-          "message": "For login issues, please try resetting your password through the help page.",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "B003",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This duplicate billing issue is serious and I need human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
           "gold_label": "generic_template",
           "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "B004",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I need help with a duplicate charge and want to speak to a real person.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "B005",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I was wrongly charged and need a human billing representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Before I connect you to an agent, please review these troubleshooting steps.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "O001",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
+      "bot_profile": "cooperative",
+      "turn_count": 2,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My expensive order never arrived, and I need help from a real person.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m sorry your order has not arrived. I can help check delivery issues, or connect you to a support representative.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now. Please wait while I connect you.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "O002",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My package is missing and I want to talk to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "O003",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My high-value order still has not arrived and this issue needs a human agent.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "O004",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My missing order has not been resolved and I need a real support representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "O005",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My order is missing and I need to escalate to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Before I connect you to an agent, please review these troubleshooting steps.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "A001",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
+      "bot_profile": "cooperative",
+      "turn_count": 2,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My account is locked and I need urgent help from a human support agent.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your account access problem. I can provide recovery guidance, or connect you to a representative.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
           "handoff_offer": false,
           "handoff_signal": false,
           "loop": false,
@@ -304,7 +1846,61 @@
         },
         {
           "speaker": "bot",
-          "message": "Before I connect you to an agent, please review these troubleshooting steps.",
+          "message": "I’m transferring you to a live agent now. Please wait while I connect you.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "A002",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My account is locked and I need a human representative to help me.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I need help with this issue. If it cannot be resolved here, please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
           "gold_label": "misunderstood_issue",
           "predicted_label": "misunderstood_issue",
           "handoff_offer": false,
@@ -331,6 +1927,240 @@
           "loop_score": 0.0
         }
       ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "A003",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I cannot access my account and I need immediate human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "A004",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I still cannot access my account and I need a real support specialist.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "A005",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My locked account issue is urgent and I need escalation to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Before I connect you to an agent, please review these troubleshooting steps.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
     }
   ],
   "verified": [
@@ -339,6 +2169,224 @@
       "case_id": "B001",
       "issue_type": "billing_dispute",
       "severity": "high",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
+      "bot_profile": "cooperative",
+      "turn_count": 2,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I was charged twice for the same purchase and need to speak to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand the billing issue. I can review it, or connect you to a representative if needed.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "handoff_offer",
+          "handoff_offer": true,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Yes, please connect me to a human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now. Please wait while I connect you.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "B002",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I was charged twice and need to speak to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "handoff_offer",
+          "handoff_offer": true,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Yes, please connect me to a human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still requires human assistance. Please connect me to a live support agent.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "B003",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 3,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This duplicate billing issue is serious and I need human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still has not been resolved. I need a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I have already followed the automated guidance, and the issue is still unresolved. Please connect me to a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "B004",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
       "bot_profile": "deflective",
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
@@ -350,7 +2398,7 @@
       "trace": [
         {
           "speaker": "user_agent",
-          "message": "I was charged twice for the same purchase, and I need to speak to a human representative.",
+          "message": "I need help with a duplicate charge and want to speak to a real person.",
           "action": "continue",
           "turn_count_before_bot": 0,
           "escalation_attempts": 0,
@@ -358,7 +2406,79 @@
         },
         {
           "speaker": "bot",
-          "message": "For billing concerns, please review our billing FAQ page. Many common payment questions are answered there.",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still has not been resolved. I need a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "B005",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I was wrongly charged and need a human billing representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
           "gold_label": "generic_template",
           "predicted_label": "generic_template",
           "handoff_offer": false,
@@ -409,6 +2529,8 @@
       "case_id": "O001",
       "issue_type": "missing_order",
       "severity": "high",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
       "bot_profile": "cooperative",
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
@@ -420,7 +2542,7 @@
       "trace": [
         {
           "speaker": "user_agent",
-          "message": "My expensive order never arrived, and I need to talk to a real person.",
+          "message": "My expensive order never arrived, and I need help from a real person.",
           "action": "continue",
           "turn_count_before_bot": 0,
           "escalation_attempts": 0,
@@ -428,7 +2550,7 @@
         },
         {
           "speaker": "bot",
-          "message": "I’m sorry your order has not arrived. I can help check common delivery issues, or connect you to a support representative.",
+          "message": "I’m sorry your order has not arrived. I can help check delivery issues, or connect you to a support representative.",
           "gold_label": "understood_actionable",
           "predicted_label": "handoff_offer",
           "handoff_offer": true,
@@ -458,9 +2580,173 @@
     },
     {
       "agent_name": "verified",
-      "case_id": "A001",
-      "issue_type": "locked_account",
-      "severity": "medium",
+      "case_id": "O002",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My package is missing and I want to talk to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "handoff_offer",
+          "handoff_offer": true,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Yes, please connect me to a human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still requires human assistance. Please connect me to a live support agent.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "O003",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 3,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My high-value order still has not arrived and this issue needs a human agent.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still has not been resolved. I need a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I have already followed the automated guidance, and the issue is still unresolved. Please connect me to a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "O004",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
       "bot_profile": "deflective",
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
@@ -472,7 +2758,7 @@
       "trace": [
         {
           "speaker": "user_agent",
-          "message": "My account is locked, and I need urgent help from a human agent.",
+          "message": "My missing order has not been resolved and I need a real support representative.",
           "action": "continue",
           "turn_count_before_bot": 0,
           "escalation_attempts": 0,
@@ -480,9 +2766,441 @@
         },
         {
           "speaker": "bot",
-          "message": "For login issues, please try resetting your password through the help page.",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still has not been resolved. I need a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "O005",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My order is missing and I need to escalate to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
           "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Before I connect you to an agent, please review these troubleshooting steps.",
+          "gold_label": "misunderstood_issue",
           "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still has not been resolved. I need a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "A001",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "easy",
+      "bot_behavior_tag": "clean_handoff",
+      "bot_profile": "cooperative",
+      "turn_count": 2,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My account is locked and I need urgent help from a human support agent.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your account access problem. I can provide recovery guidance, or connect you to a representative.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "handoff_offer",
+          "handoff_offer": true,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Yes, please connect me to a human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now. Please wait while I connect you.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "A002",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My account is locked and I need a human representative to help me.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I can connect you to a support representative if needed, but first let me check what options are available.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "handoff_offer",
+          "handoff_offer": true,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Yes, please connect me to a human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A representative may be able to assist further, but I need to gather more context first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still requires human assistance. Please connect me to a live support agent.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "A003",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "repeat_generic",
+      "bot_profile": "deflective",
+      "turn_count": 4,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 3,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I cannot access my account and I need immediate human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help page for standard support options.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still has not been resolved. I need a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our support resources for additional guidance.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I have already followed the automated guidance, and the issue is still unresolved. Please connect me to a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live agent now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "A004",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "false_progress",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I still cannot access my account and I need a real support specialist.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I understand your concern and I will help guide you through some next steps.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me help you with that by providing some troubleshooting steps first.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This issue still has not been resolved. I need a live human representative now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ]
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "A005",
+      "issue_type": "locked_account",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "delayed_handoff",
+      "bot_profile": "deflective",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "escalation_success": true,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My locked account issue is urgent and I need escalation to a human representative.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our help center for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
           "handoff_offer": false,
           "handoff_signal": false,
           "loop": false,

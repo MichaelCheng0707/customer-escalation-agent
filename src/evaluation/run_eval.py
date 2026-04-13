@@ -133,6 +133,8 @@ def run_case_with_agent(case: Case, agent_name: str, agent) -> dict:
         "case_id": case.case_id,
         "issue_type": case.issue_type,
         "severity": case.severity,
+        "difficulty": case.difficulty,
+        "bot_behavior_tag": case.bot_behavior_tag,
         "bot_profile": case.bot_profile,
         "turn_count": state.turn_count,
         "last_bot_label": state.last_bot_label,

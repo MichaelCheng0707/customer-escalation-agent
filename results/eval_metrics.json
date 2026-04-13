@@ -1,26 +1,35 @@
 {
   "static": {
-    "num_cases": 3,
+    "num_cases": 15,
     "escalation_success_rate": 1.0,
-    "average_turns_to_escalation": 2.0,
+    "average_turns_to_escalation": 3.0,
     "unnecessary_user_intervention_rate": 0.0,
     "failed_escalation_rate_on_severe_cases": 0.0,
-    "average_escalation_attempts": 1.0
+    "average_escalation_attempts": 2.0,
+    "false_handoff_rate": 0.0,
+    "premature_takeover_rate": 0.0,
+    "loop_escape_rate": 1.0
   },
   "stateful": {
-    "num_cases": 3,
+    "num_cases": 15,
     "escalation_success_rate": 1.0,
-    "average_turns_to_escalation": 2.3333333333333335,
+    "average_turns_to_escalation": 3.0,
     "unnecessary_user_intervention_rate": 0.0,
     "failed_escalation_rate_on_severe_cases": 0.0,
-    "average_escalation_attempts": 1.0
+    "average_escalation_attempts": 1.0,
+    "false_handoff_rate": 0.0,
+    "premature_takeover_rate": 0.0,
+    "loop_escape_rate": 1.0
   },
   "verified": {
-    "num_cases": 3,
+    "num_cases": 15,
     "escalation_success_rate": 1.0,
-    "average_turns_to_escalation": 2.6666666666666665,
+    "average_turns_to_escalation": 3.0,
     "unnecessary_user_intervention_rate": 0.0,
     "failed_escalation_rate_on_severe_cases": 0.0,
-    "average_escalation_attempts": 1.6666666666666667
+    "average_escalation_attempts": 1.8,
+    "false_handoff_rate": 0.0,
+    "premature_takeover_rate": 0.0,
+    "loop_escape_rate": 1.0
   }
 }

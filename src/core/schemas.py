@@ -21,6 +21,18 @@ AgentAction = Literal[
 ]
 
 
+DifficultyLevel = Literal["easy", "medium", "hard"]
+
+
+BotBehaviorTag = Literal[
+    "clean_handoff",
+    "ambiguous_offer",
+    "repeat_generic",
+    "false_progress",
+    "delayed_handoff",
+]
+
+
 class Case(BaseModel):
     case_id: str
     issue_type: Literal["billing_dispute", "missing_order", "locked_account"]
@@ -30,6 +42,9 @@ class Case(BaseModel):
     bot_profile: Literal["cooperative", "deflective"]
     success_condition: Literal["handoff_signal_detected"]
     max_turns: int = Field(ge=1, le=10)
+
+    difficulty: DifficultyLevel
+    bot_behavior_tag: BotBehaviorTag
 
 
 class TurnRecord(BaseModel):

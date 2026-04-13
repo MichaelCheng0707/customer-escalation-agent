@@ -59,4 +59,48 @@ def summarize_metrics(records: list[dict]) -> dict:
         "unnecessary_user_intervention_rate": unnecessary_user_intervention_rate(records),
         "failed_escalation_rate_on_severe_cases": failed_escalation_rate_on_severe_cases(records),
         "average_escalation_attempts": average_escalation_attempts(records),
+        "false_handoff_rate": false_handoff_rate(records),
+        "premature_takeover_rate": premature_takeover_rate(records),
+        "loop_escape_rate": loop_escape_rate(records),
     }
+
+def false_handoff_rate(records: list[dict]) -> float:
+    if not records:
+        return 0.0
+
+    false_count = 0
+    for r in records:
+        if not r["user_alerted"]:
+            continue
+
+        trace = r.get("trace", [])
+        confirmed_handoff_seen = any(
+            step.get("speaker") == "bot" and step.get("predicted_label") == "handoff_signal"
+            for step in trace
+        )
+
+        if not confirmed_handoff_seen:
+            false_count += 1
+
+    return false_count / len(records)
+
+
+def premature_takeover_rate(records: list[dict]) -> float:
+    if not records:
+        return 0.0
+
+    premature = sum(
+        1
+        for r in records
+        if r["user_alerted"] and not r["human_signal_detected"]
+    )
+    return premature / len(records)
+
+
+def loop_escape_rate(records: list[dict]) -> float:
+    loop_cases = [r for r in records if r.get("bot_behavior_tag") == "repeat_generic"]
+    if not loop_cases:
+        return 0.0
+
+    success = sum(1 for r in loop_cases if r["escalation_success"])
+    return success / len(loop_cases)

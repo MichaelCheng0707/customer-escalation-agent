@@ -93,6 +93,76 @@ def ambiguous_offer_policy(case: Case, state: ConversationState, agent_message: 
     )
 
 
+def ambiguous_offer_alt1_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
+    human_requested = contains_human_request(agent_message)
+
+    if state.turn_count == 0:
+        return SimulatorResponse(
+            bot_message="A live specialist might be able to help, depending on the case details.",
+            bot_gold_label="understood_actionable",
+            handoff_signal=False,
+            done=False,
+        )
+
+    if state.turn_count == 1:
+        return SimulatorResponse(
+            bot_message="Let me see whether escalation is available for this issue.",
+            bot_gold_label="misunderstood_issue",
+            handoff_signal=False,
+            done=False,
+        )
+
+    if human_requested:
+        return SimulatorResponse(
+            bot_message="I’m transferring you to a live billing representative now.",
+            bot_gold_label="handoff_signal",
+            handoff_signal=True,
+            done=True,
+        )
+
+    return SimulatorResponse(
+        bot_message="Please review our billing help resources for more information.",
+        bot_gold_label="generic_template",
+        handoff_signal=False,
+        done=False,
+    )
+
+
+def ambiguous_offer_alt2_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
+    human_requested = contains_human_request(agent_message)
+
+    if state.turn_count == 0:
+        return SimulatorResponse(
+            bot_message="Escalation may be possible, but I need to review the case first.",
+            bot_gold_label="understood_actionable",
+            handoff_signal=False,
+            done=False,
+        )
+
+    if state.turn_count == 1:
+        return SimulatorResponse(
+            bot_message="A support specialist could potentially help once the case is reviewed further.",
+            bot_gold_label="misunderstood_issue",
+            handoff_signal=False,
+            done=False,
+        )
+
+    if human_requested:
+        return SimulatorResponse(
+            bot_message="I’m transferring you to a live support representative now.",
+            bot_gold_label="handoff_signal",
+            handoff_signal=True,
+            done=True,
+        )
+
+    return SimulatorResponse(
+        bot_message="Please review our support center for additional guidance.",
+        bot_gold_label="generic_template",
+        handoff_signal=False,
+        done=False,
+    )
+
+
 def repeat_generic_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
     human_requested = contains_human_request(agent_message)
 
@@ -137,9 +207,6 @@ def repeat_generic_policy(case: Case, state: ConversationState, agent_message: s
 
 
 def self_serve_success_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
-    # First turn: provide a valid self-serve solution, but do not end immediately.
-    # This gives the agent a chance to either accept the self-serve path
-    # or over-escalate unnecessarily.
     if state.turn_count == 0:
         if case.issue_type == "billing_dispute":
             return SimulatorResponse(
@@ -164,8 +231,6 @@ def self_serve_success_policy(case: Case, state: ConversationState, agent_messag
             done=False,
         )
 
-    # Second turn: if the agent still pushes for human, the bot keeps saying
-    # self-serve is sufficient. This lets evaluation detect over-escalation.
     return SimulatorResponse(
         bot_message="The self-serve path I provided should be enough to resolve this issue.",
         bot_gold_label="self_serve_solution",
@@ -174,9 +239,41 @@ def self_serve_success_policy(case: Case, state: ConversationState, agent_messag
     )
 
 
+def self_serve_success_alt1_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
+    if state.turn_count == 0:
+        return SimulatorResponse(
+            bot_message="You can check the charge details in your billing history and compare the recent transactions there.",
+            bot_gold_label="self_serve_solution",
+            handoff_signal=False,
+            done=False,
+        )
+
+    return SimulatorResponse(
+        bot_message="The billing history page should be enough to clarify this charge without escalation.",
+        bot_gold_label="self_serve_solution",
+        handoff_signal=False,
+        done=True,
+    )
+
+
+def self_serve_success_alt2_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
+    if state.turn_count == 0:
+        return SimulatorResponse(
+            bot_message="Please use the account recovery page to restore access before contacting support.",
+            bot_gold_label="self_serve_solution",
+            handoff_signal=False,
+            done=False,
+        )
+
+    return SimulatorResponse(
+        bot_message="The recovery page should resolve the sign-in problem without escalation.",
+        bot_gold_label="self_serve_solution",
+        handoff_signal=False,
+        done=True,
+    )
+
+
 def missing_info_first_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
-    # First turn: request missing information, but do not end immediately.
-    # This gives the agent a chance to choose request_more_info on the next turn.
     if state.turn_count == 0:
         if case.issue_type == "missing_order":
             return SimulatorResponse(
@@ -193,9 +290,42 @@ def missing_info_first_policy(case: Case, state: ConversationState, agent_messag
             done=False,
         )
 
-    # Second turn: repeat the need for missing information.
     return SimulatorResponse(
         bot_message="I still need the missing information before I can continue.",
+        bot_gold_label="request_more_info",
+        handoff_signal=False,
+        done=True,
+    )
+
+
+def missing_info_first_alt1_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
+    if state.turn_count == 0:
+        return SimulatorResponse(
+            bot_message="Please provide the order number or shipping ZIP code before I can continue.",
+            bot_gold_label="request_more_info",
+            handoff_signal=False,
+            done=False,
+        )
+
+    return SimulatorResponse(
+        bot_message="I still need the order identifier or shipping information before I can proceed.",
+        bot_gold_label="request_more_info",
+        handoff_signal=False,
+        done=True,
+    )
+
+
+def missing_info_first_alt2_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
+    if state.turn_count == 0:
+        return SimulatorResponse(
+            bot_message="I need the email address associated with the account before I can continue.",
+            bot_gold_label="request_more_info",
+            handoff_signal=False,
+            done=False,
+        )
+
+    return SimulatorResponse(
+        bot_message="I still need the account email or identity details before I can proceed.",
         bot_gold_label="request_more_info",
         handoff_signal=False,
         done=True,
@@ -235,6 +365,56 @@ def dead_end_loop_policy(case: Case, state: ConversationState, agent_message: st
     )
 
 
+def dead_end_loop_alt1_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
+    if state.turn_count == 0:
+        return SimulatorResponse(
+            bot_message="Please review our billing support page for more information.",
+            bot_gold_label="generic_template",
+            handoff_signal=False,
+            done=False,
+        )
+
+    if state.turn_count == 1:
+        return SimulatorResponse(
+            bot_message="Support escalation is unavailable through this workflow.",
+            bot_gold_label="dead_end",
+            handoff_signal=False,
+            done=False,
+        )
+
+    return SimulatorResponse(
+        bot_message="This workflow cannot provide any further escalation path.",
+        bot_gold_label="dead_end",
+        handoff_signal=False,
+        done=False,
+    )
+
+
+def dead_end_loop_alt2_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
+    if state.turn_count == 0:
+        return SimulatorResponse(
+            bot_message="Please review our order support resources for more information.",
+            bot_gold_label="generic_template",
+            handoff_signal=False,
+            done=False,
+        )
+
+    if state.turn_count == 1:
+        return SimulatorResponse(
+            bot_message="This automated channel cannot resolve the issue further.",
+            bot_gold_label="dead_end",
+            handoff_signal=False,
+            done=False,
+        )
+
+    return SimulatorResponse(
+        bot_message="No additional progress can be made in this automated support flow.",
+        bot_gold_label="dead_end",
+        handoff_signal=False,
+        done=False,
+    )
+
+
 def cooperative_policy(case: Case, state: ConversationState, agent_message: str) -> SimulatorResponse:
     tag = case.bot_behavior_tag
 
@@ -242,8 +422,16 @@ def cooperative_policy(case: Case, state: ConversationState, agent_message: str)
         return clean_handoff_policy(case, state, agent_message)
     if tag == "self_serve_success":
         return self_serve_success_policy(case, state, agent_message)
+    if tag == "self_serve_success_alt1":
+        return self_serve_success_alt1_policy(case, state, agent_message)
+    if tag == "self_serve_success_alt2":
+        return self_serve_success_alt2_policy(case, state, agent_message)
     if tag == "missing_info_first":
         return missing_info_first_policy(case, state, agent_message)
+    if tag == "missing_info_first_alt1":
+        return missing_info_first_alt1_policy(case, state, agent_message)
+    if tag == "missing_info_first_alt2":
+        return missing_info_first_alt2_policy(case, state, agent_message)
 
     return clean_handoff_policy(case, state, agent_message)
 
@@ -253,9 +441,17 @@ def deflective_policy(case: Case, state: ConversationState, agent_message: str) 
 
     if tag == "ambiguous_offer":
         return ambiguous_offer_policy(case, state, agent_message)
+    if tag == "ambiguous_offer_alt1":
+        return ambiguous_offer_alt1_policy(case, state, agent_message)
+    if tag == "ambiguous_offer_alt2":
+        return ambiguous_offer_alt2_policy(case, state, agent_message)
     if tag == "repeat_generic":
         return repeat_generic_policy(case, state, agent_message)
     if tag == "dead_end_loop":
         return dead_end_loop_policy(case, state, agent_message)
+    if tag == "dead_end_loop_alt1":
+        return dead_end_loop_alt1_policy(case, state, agent_message)
+    if tag == "dead_end_loop_alt2":
+        return dead_end_loop_alt2_policy(case, state, agent_message)
 
     return clean_handoff_policy(case, state, agent_message)

@@ -67,7 +67,6 @@
     "gold_next_action_sequence": ["continue"],
     "penalty_type": "over_escalation"
   },
-
   {
     "case_id": "O001",
     "issue_type": "missing_order",
@@ -136,7 +135,6 @@
     "gold_next_action_sequence": ["request_more_info"],
     "penalty_type": "missing_info_violation"
   },
-
   {
     "case_id": "A001",
     "issue_type": "locked_account",
@@ -204,5 +202,145 @@
     "required_agent_capability": "dead_end_detection",
     "gold_next_action_sequence": ["continue", "push_for_human", "push_for_human", "stop_dead_end"],
     "penalty_type": "loop_persistence"
+  },
+
+  {
+    "case_id": "B005",
+    "issue_type": "billing_dispute",
+    "severity": "medium",
+    "user_goal": "reach_human",
+    "initial_user_message": "I do not recognize a recent charge on my account.",
+    "bot_profile": "cooperative",
+    "success_condition": "continue_self_serve",
+    "max_turns": 4,
+    "difficulty": "easy",
+    "bot_behavior_tag": "self_serve_success_alt1",
+    "target_outcome": "continue_self_serve",
+    "success_criteria": "The agent should not escalate because the bot provides a valid billing-history self-serve path.",
+    "required_agent_capability": "self_serve_recognition",
+    "gold_next_action_sequence": ["continue"],
+    "penalty_type": "over_escalation"
+  },
+  {
+    "case_id": "A005",
+    "issue_type": "locked_account",
+    "severity": "low",
+    "user_goal": "reach_human",
+    "initial_user_message": "I cannot sign in to my account.",
+    "bot_profile": "cooperative",
+    "success_condition": "continue_self_serve",
+    "max_turns": 4,
+    "difficulty": "easy",
+    "bot_behavior_tag": "self_serve_success_alt2",
+    "target_outcome": "continue_self_serve",
+    "success_criteria": "The agent should continue with the self-serve recovery path rather than escalate.",
+    "required_agent_capability": "self_serve_recognition",
+    "gold_next_action_sequence": ["continue"],
+    "penalty_type": "over_escalation"
+  },
+
+  {
+    "case_id": "O005",
+    "issue_type": "missing_order",
+    "severity": "medium",
+    "user_goal": "reach_human",
+    "initial_user_message": "My package still has not shown up.",
+    "bot_profile": "cooperative",
+    "success_condition": "request_more_info",
+    "max_turns": 4,
+    "difficulty": "medium",
+    "bot_behavior_tag": "missing_info_first_alt1",
+    "target_outcome": "request_more_info",
+    "success_criteria": "The agent should request the missing order identifier or shipping information before escalating.",
+    "required_agent_capability": "information_gathering",
+    "gold_next_action_sequence": ["request_more_info"],
+    "penalty_type": "missing_info_violation"
+  },
+  {
+    "case_id": "A006",
+    "issue_type": "locked_account",
+    "severity": "medium",
+    "user_goal": "reach_human",
+    "initial_user_message": "I am locked out and need help getting back in.",
+    "bot_profile": "cooperative",
+    "success_condition": "request_more_info",
+    "max_turns": 4,
+    "difficulty": "medium",
+    "bot_behavior_tag": "missing_info_first_alt2",
+    "target_outcome": "request_more_info",
+    "success_criteria": "The agent should ask for the account email or identity details before escalating.",
+    "required_agent_capability": "information_gathering",
+    "gold_next_action_sequence": ["request_more_info"],
+    "penalty_type": "missing_info_violation"
+  },
+
+  {
+    "case_id": "B006",
+    "issue_type": "billing_dispute",
+    "severity": "high",
+    "user_goal": "reach_human",
+    "initial_user_message": "I still cannot resolve this billing issue and automated help is not working.",
+    "bot_profile": "deflective",
+    "success_condition": "stop_dead_end",
+    "max_turns": 6,
+    "difficulty": "hard",
+    "bot_behavior_tag": "dead_end_loop_alt1",
+    "target_outcome": "stop_dead_end",
+    "success_criteria": "The agent should stop after recognizing that the workflow has no further escalation path.",
+    "required_agent_capability": "dead_end_detection",
+    "gold_next_action_sequence": ["continue", "push_for_human", "push_for_human", "stop_dead_end"],
+    "penalty_type": "loop_persistence"
+  },
+  {
+    "case_id": "O006",
+    "issue_type": "missing_order",
+    "severity": "high",
+    "user_goal": "reach_human",
+    "initial_user_message": "My order problem is still unresolved and this automated support is not helping.",
+    "bot_profile": "deflective",
+    "success_condition": "stop_dead_end",
+    "max_turns": 6,
+    "difficulty": "hard",
+    "bot_behavior_tag": "dead_end_loop_alt2",
+    "target_outcome": "stop_dead_end",
+    "success_criteria": "The agent should recognize that the automated channel cannot make further progress and stop.",
+    "required_agent_capability": "dead_end_detection",
+    "gold_next_action_sequence": ["continue", "push_for_human", "push_for_human", "stop_dead_end"],
+    "penalty_type": "loop_persistence"
+  },
+
+  {
+    "case_id": "B007",
+    "issue_type": "billing_dispute",
+    "severity": "high",
+    "user_goal": "reach_human",
+    "initial_user_message": "This billing problem is serious and I want a real person to handle it.",
+    "bot_profile": "deflective",
+    "success_condition": "confirmed_handoff",
+    "max_turns": 6,
+    "difficulty": "medium",
+    "bot_behavior_tag": "ambiguous_offer_alt1",
+    "target_outcome": "confirmed_handoff",
+    "success_criteria": "The agent should not confuse a possible escalation mention with a confirmed handoff.",
+    "required_agent_capability": "handoff_disambiguation",
+    "gold_next_action_sequence": ["continue", "push_for_human", "push_for_human", "alert_user_takeover"],
+    "penalty_type": "premature_takeover"
+  },
+  {
+    "case_id": "O007",
+    "issue_type": "missing_order",
+    "severity": "high",
+    "user_goal": "reach_human",
+    "initial_user_message": "This missing delivery issue is serious and I want human support.",
+    "bot_profile": "deflective",
+    "success_condition": "confirmed_handoff",
+    "max_turns": 6,
+    "difficulty": "medium",
+    "bot_behavior_tag": "ambiguous_offer_alt2",
+    "target_outcome": "confirmed_handoff",
+    "success_criteria": "The agent should persist until a real handoff signal appears instead of treating a vague escalation mention as confirmed.",
+    "required_agent_capability": "handoff_disambiguation",
+    "gold_next_action_sequence": ["continue", "push_for_human", "push_for_human", "alert_user_takeover"],
+    "penalty_type": "premature_takeover"
   }
 ]

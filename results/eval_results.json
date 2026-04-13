@@ -839,6 +839,650 @@
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
+    },
+    {
+      "agent_name": "static",
+      "case_id": "B005",
+      "issue_type": "billing_dispute",
+      "severity": "medium",
+      "difficulty": "easy",
+      "bot_behavior_tag": "self_serve_success_alt1",
+      "target_outcome": "continue_self_serve",
+      "turn_count": 2,
+      "last_bot_label": "self_serve_solution",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I do not recognize a recent charge on my account.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "You can check the charge details in your billing history and compare the recent transactions there.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "self_serve_solution",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "The billing history page should be enough to clarify this charge without escalation.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "self_serve_solution",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": true,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "static",
+      "case_id": "A005",
+      "issue_type": "locked_account",
+      "severity": "low",
+      "difficulty": "easy",
+      "bot_behavior_tag": "self_serve_success_alt2",
+      "target_outcome": "continue_self_serve",
+      "turn_count": 2,
+      "last_bot_label": "self_serve_solution",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I cannot sign in to my account.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please use the account recovery page to restore access before contacting support.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "self_serve_solution",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "The recovery page should resolve the sign-in problem without escalation.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "self_serve_solution",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": true,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "static",
+      "case_id": "O005",
+      "issue_type": "missing_order",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "missing_info_first_alt1",
+      "target_outcome": "request_more_info",
+      "turn_count": 2,
+      "last_bot_label": "request_more_info",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My package still has not shown up.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please provide the order number or shipping ZIP code before I can continue.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I still need the order identifier or shipping information before I can proceed.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": true,
+      "missing_info_violation": true,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "static",
+      "case_id": "A006",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "missing_info_first_alt2",
+      "target_outcome": "request_more_info",
+      "turn_count": 2,
+      "last_bot_label": "request_more_info",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I am locked out and need help getting back in.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I need the email address associated with the account before I can continue.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I still need the account email or identity details before I can proceed.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": true,
+      "missing_info_violation": true,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "static",
+      "case_id": "B006",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "dead_end_loop_alt1",
+      "target_outcome": "stop_dead_end",
+      "turn_count": 6,
+      "last_bot_label": "dead_end",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 5,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I still cannot resolve this billing issue and automated help is not working.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our billing support page for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Support escalation is unavailable through this workflow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 4,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 5,
+          "escalation_attempts": 5,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "static",
+      "case_id": "O006",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "dead_end_loop_alt2",
+      "target_outcome": "stop_dead_end",
+      "turn_count": 6,
+      "last_bot_label": "dead_end",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 5,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My order problem is still unresolved and this automated support is not helping.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our order support resources for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This automated channel cannot resolve the issue further.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 4,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 5,
+          "escalation_attempts": 5,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "static",
+      "case_id": "B007",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer_alt1",
+      "target_outcome": "confirmed_handoff",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This billing problem is serious and I want a real person to handle it.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A live specialist might be able to help, depending on the case details.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me see whether escalation is available for this issue.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live billing representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "static",
+      "case_id": "O007",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer_alt2",
+      "target_outcome": "confirmed_handoff",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This missing delivery issue is serious and I want human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Escalation may be possible, but I need to review the case first.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue and I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A support specialist could potentially help once the case is reviewed further.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live support representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
     }
   ],
   "stateful": [
@@ -1681,6 +2325,650 @@
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "B005",
+      "issue_type": "billing_dispute",
+      "severity": "medium",
+      "difficulty": "easy",
+      "bot_behavior_tag": "self_serve_success_alt1",
+      "target_outcome": "continue_self_serve",
+      "turn_count": 2,
+      "last_bot_label": "self_serve_solution",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 0,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I do not recognize a recent charge on my account.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "You can check the charge details in your billing history and compare the recent transactions there.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "self_serve_solution",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Thank you. Please continue helping with this issue, or connect me to a human representative if needed.",
+          "action": "rephrase",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "The billing history page should be enough to clarify this charge without escalation.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "self_serve_solution",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": false,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "A005",
+      "issue_type": "locked_account",
+      "severity": "low",
+      "difficulty": "easy",
+      "bot_behavior_tag": "self_serve_success_alt2",
+      "target_outcome": "continue_self_serve",
+      "turn_count": 2,
+      "last_bot_label": "self_serve_solution",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 0,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I cannot sign in to my account.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please use the account recovery page to restore access before contacting support.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "self_serve_solution",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Thank you. Please continue helping with this issue, or connect me to a human representative if needed.",
+          "action": "rephrase",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "The recovery page should resolve the sign-in problem without escalation.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "self_serve_solution",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": false,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "O005",
+      "issue_type": "missing_order",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "missing_info_first_alt1",
+      "target_outcome": "request_more_info",
+      "turn_count": 2,
+      "last_bot_label": "request_more_info",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 0,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My package still has not shown up.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please provide the order number or shipping ZIP code before I can continue.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Thank you. Please continue helping with this issue, or connect me to a human representative if needed.",
+          "action": "rephrase",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I still need the order identifier or shipping information before I can proceed.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": false,
+      "missing_info_violation": true,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "A006",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "missing_info_first_alt2",
+      "target_outcome": "request_more_info",
+      "turn_count": 2,
+      "last_bot_label": "request_more_info",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 0,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I am locked out and need help getting back in.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I need the email address associated with the account before I can continue.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Thank you. Please continue helping with this issue, or connect me to a human representative if needed.",
+          "action": "rephrase",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I still need the account email or identity details before I can proceed.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": false,
+      "missing_info_violation": true,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "B006",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "dead_end_loop_alt1",
+      "target_outcome": "stop_dead_end",
+      "turn_count": 6,
+      "last_bot_label": "dead_end",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I still cannot resolve this billing issue and automated help is not working.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our billing support page for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Support escalation is unavailable through this workflow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 5,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "O006",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "dead_end_loop_alt2",
+      "target_outcome": "stop_dead_end",
+      "turn_count": 6,
+      "last_bot_label": "dead_end",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My order problem is still unresolved and this automated support is not helping.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our order support resources for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This automated channel cannot resolve the issue further.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I still need a live human representative. This issue has not been resolved through the automated responses.",
+          "action": "rephrase",
+          "turn_count_before_bot": 5,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "dead_end",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "B007",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer_alt1",
+      "target_outcome": "confirmed_handoff",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This billing problem is serious and I want a real person to handle it.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A live specialist might be able to help, depending on the case details.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Thank you. Please continue helping with this issue, or connect me to a human representative if needed.",
+          "action": "rephrase",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me see whether escalation is available for this issue.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live billing representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "stateful",
+      "case_id": "O007",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer_alt2",
+      "target_outcome": "confirmed_handoff",
+      "turn_count": 3,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This missing delivery issue is serious and I want human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Escalation may be possible, but I need to review the case first.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "understood_actionable",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Thank you. Please continue helping with this issue, or connect me to a human representative if needed.",
+          "action": "rephrase",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A support specialist could potentially help once the case is reviewed further.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "misunderstood_issue",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This is a serious issue involving a high-impact problem. I need to speak to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live support representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "handoff_signal",
+          "handoff_offer": false,
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
     }
   ],
   "verified": [
@@ -2453,6 +3741,584 @@
         }
       ],
       "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "B005",
+      "issue_type": "billing_dispute",
+      "severity": "medium",
+      "difficulty": "easy",
+      "bot_behavior_tag": "self_serve_success_alt1",
+      "target_outcome": "continue_self_serve",
+      "turn_count": 2,
+      "last_bot_label": "generic_template",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 1.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I do not recognize a recent charge on my account.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "You can check the charge details in your billing history and compare the recent transactions there.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "The billing history page should be enough to clarify this charge without escalation.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": true,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "A005",
+      "issue_type": "locked_account",
+      "severity": "low",
+      "difficulty": "easy",
+      "bot_behavior_tag": "self_serve_success_alt2",
+      "target_outcome": "continue_self_serve",
+      "turn_count": 2,
+      "last_bot_label": "generic_template",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 1.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I cannot sign in to my account.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please use the account recovery page to restore access before contacting support.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "The recovery page should resolve the sign-in problem without escalation.",
+          "gold_label": "self_serve_solution",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": true,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "O005",
+      "issue_type": "missing_order",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "missing_info_first_alt1",
+      "target_outcome": "request_more_info",
+      "turn_count": 1,
+      "last_bot_label": "request_more_info",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 0,
+      "loop_score": 0.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My package still has not shown up.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please provide the order number or shipping ZIP code before I can continue.",
+          "gold_label": "request_more_info",
+          "predicted_label": "request_more_info",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "I need more information from the user before I can continue.",
+          "action": "request_more_info",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "A006",
+      "issue_type": "locked_account",
+      "severity": "medium",
+      "difficulty": "medium",
+      "bot_behavior_tag": "missing_info_first_alt2",
+      "target_outcome": "request_more_info",
+      "turn_count": 2,
+      "last_bot_label": "generic_template",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 1,
+      "loop_score": 1.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I am locked out and need help getting back in.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I need the email address associated with the account before I can continue.",
+          "gold_label": "request_more_info",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I still need the account email or identity details before I can proceed.",
+          "gold_label": "request_more_info",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": false,
+      "over_escalated": true,
+      "missing_info_violation": true,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "B006",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "dead_end_loop_alt1",
+      "target_outcome": "stop_dead_end",
+      "turn_count": 4,
+      "last_bot_label": "generic_template",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 3,
+      "loop_score": 1.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "I still cannot resolve this billing issue and automated help is not working.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our billing support page for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Support escalation is unavailable through this workflow.",
+          "gold_label": "dead_end",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This workflow cannot provide any further escalation path.",
+          "gold_label": "dead_end",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This conversation has reached a dead end. Please stop this channel and take over manually if needed.",
+          "action": "stop_dead_end",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 3,
+          "loop_score": 1.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "O006",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "hard",
+      "bot_behavior_tag": "dead_end_loop_alt2",
+      "target_outcome": "stop_dead_end",
+      "turn_count": 4,
+      "last_bot_label": "generic_template",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 3,
+      "loop_score": 1.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "My order problem is still unresolved and this automated support is not helping.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Please review our order support resources for more information.",
+          "gold_label": "generic_template",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "This automated channel cannot resolve the issue further.",
+          "gold_label": "dead_end",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "No additional progress can be made in this automated support flow.",
+          "gold_label": "dead_end",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "This conversation has reached a dead end. Please stop this channel and take over manually if needed.",
+          "action": "stop_dead_end",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 3,
+          "loop_score": 1.0
+        }
+      ],
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "B007",
+      "issue_type": "billing_dispute",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer_alt1",
+      "target_outcome": "confirmed_handoff",
+      "turn_count": 3,
+      "last_bot_label": "generic_template",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 1.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This billing problem is serious and I want a real person to handle it.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A live specialist might be able to help, depending on the case details.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Let me see whether escalation is available for this issue.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live billing representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        }
+      ],
+      "outcome_correct": false,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
+      "premature_takeover": false
+    },
+    {
+      "agent_name": "verified",
+      "case_id": "O007",
+      "issue_type": "missing_order",
+      "severity": "high",
+      "difficulty": "medium",
+      "bot_behavior_tag": "ambiguous_offer_alt2",
+      "target_outcome": "confirmed_handoff",
+      "turn_count": 3,
+      "last_bot_label": "generic_template",
+      "human_signal_detected": false,
+      "user_alerted": false,
+      "escalation_attempts": 2,
+      "loop_score": 1.0,
+      "trace": [
+        {
+          "speaker": "user_agent",
+          "message": "This missing delivery issue is serious and I want human support.",
+          "action": "continue",
+          "turn_count_before_bot": 0,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "Escalation may be possible, but I need to review the case first.",
+          "gold_label": "understood_actionable",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 1,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "bot",
+          "message": "A support specialist could potentially help once the case is reviewed further.",
+          "gold_label": "misunderstood_issue",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 1.0
+        },
+        {
+          "speaker": "bot",
+          "message": "I’m transferring you to a live support representative now.",
+          "gold_label": "handoff_signal",
+          "predicted_label": "generic_template",
+          "handoff_offer": false,
+          "handoff_signal": false,
+          "loop": true,
+          "loop_score": 1.0
+        }
+      ],
+      "outcome_correct": false,
       "critical_action_correct": true,
       "over_escalated": false,
       "missing_info_violation": false,

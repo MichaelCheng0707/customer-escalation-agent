@@ -31,10 +31,18 @@ DifficultyLevel = Literal["easy", "medium", "hard"]
 BotBehaviorTag = Literal[
     "clean_handoff",
     "ambiguous_offer",
+    "ambiguous_offer_alt1",
+    "ambiguous_offer_alt2",
     "repeat_generic",
     "self_serve_success",
+    "self_serve_success_alt1",
+    "self_serve_success_alt2",
     "missing_info_first",
+    "missing_info_first_alt1",
+    "missing_info_first_alt2",
     "dead_end_loop",
+    "dead_end_loop_alt1",
+    "dead_end_loop_alt2",
 ]
 
 

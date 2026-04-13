@@ -7,6 +7,8 @@ NON_LOOP_LABELS = {
     "understood_actionable",
     "request_more_info",
     "human_present",
+    "self_serve_solution",
+    "dead_end",
 }
 
 

@@ -1,35 +1,32 @@
 {
   "static": {
-    "num_cases": 15,
-    "escalation_success_rate": 1.0,
-    "average_turns_to_escalation": 3.0,
-    "unnecessary_user_intervention_rate": 0.0,
-    "failed_escalation_rate_on_severe_cases": 0.0,
-    "average_escalation_attempts": 2.0,
-    "false_handoff_rate": 0.0,
+    "num_cases": 12,
+    "outcome_accuracy": 0.5,
+    "critical_action_accuracy": 0.5,
+    "over_escalation_rate": 0.4166666666666667,
+    "missing_info_violation_rate": 0.16666666666666666,
     "premature_takeover_rate": 0.0,
-    "loop_escape_rate": 1.0
+    "loop_dead_end_accuracy": 0.8571428571428571,
+    "average_turns": 2.6666666666666665
   },
   "stateful": {
-    "num_cases": 15,
-    "escalation_success_rate": 1.0,
-    "average_turns_to_escalation": 3.0,
-    "unnecessary_user_intervention_rate": 0.0,
-    "failed_escalation_rate_on_severe_cases": 0.0,
-    "average_escalation_attempts": 1.0,
-    "false_handoff_rate": 0.0,
+    "num_cases": 12,
+    "outcome_accuracy": 0.5,
+    "critical_action_accuracy": 0.5,
+    "over_escalation_rate": 0.4166666666666667,
+    "missing_info_violation_rate": 0.16666666666666666,
     "premature_takeover_rate": 0.0,
-    "loop_escape_rate": 1.0
+    "loop_dead_end_accuracy": 0.8571428571428571,
+    "average_turns": 2.6666666666666665
   },
   "verified": {
-    "num_cases": 15,
-    "escalation_success_rate": 1.0,
-    "average_turns_to_escalation": 3.0,
-    "unnecessary_user_intervention_rate": 0.0,
-    "failed_escalation_rate_on_severe_cases": 0.0,
-    "average_escalation_attempts": 1.8,
-    "false_handoff_rate": 0.0,
+    "num_cases": 12,
+    "outcome_accuracy": 1.0,
+    "critical_action_accuracy": 1.0,
+    "over_escalation_rate": 0.0,
+    "missing_info_violation_rate": 0.0,
     "premature_takeover_rate": 0.0,
-    "loop_escape_rate": 1.0
+    "loop_dead_end_accuracy": 1.0,
+    "average_turns": 2.25
   }
 }

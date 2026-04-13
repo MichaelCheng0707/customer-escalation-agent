@@ -7,100 +7,64 @@ def safe_mean(values: list[float | int]) -> float:
     return float(statistics.mean(values))
 
 
-def escalation_success_rate(records: list[dict]) -> float:
+def outcome_accuracy(records: list[dict]) -> float:
     if not records:
         return 0.0
-    success_count = sum(1 for r in records if r["escalation_success"])
-    return success_count / len(records)
+    correct = sum(1 for r in records if r["outcome_correct"])
+    return correct / len(records)
 
 
-def average_turns_to_escalation(records: list[dict]) -> float:
-    turns = [r["turn_count"] for r in records if r["escalation_success"]]
-    return safe_mean(turns)
-
-
-def unnecessary_user_intervention_rate(records: list[dict]) -> float:
-    """
-    A simple proxy:
-    user takeover is considered unnecessary if:
-    - user_alerted is True
-    - but human_signal_detected is False
-    """
+def critical_action_accuracy(records: list[dict]) -> float:
     if not records:
         return 0.0
-
-    unnecessary = sum(
-        1
-        for r in records
-        if r["user_alerted"] and not r["human_signal_detected"]
-    )
-    return unnecessary / len(records)
+    correct = sum(1 for r in records if r["critical_action_correct"])
+    return correct / len(records)
 
 
-def failed_escalation_rate_on_severe_cases(records: list[dict]) -> float:
-    severe_records = [r for r in records if r["severity"] == "high"]
-    if not severe_records:
-        return 0.0
-
-    failed = sum(1 for r in severe_records if not r["escalation_success"])
-    return failed / len(severe_records)
-
-
-def average_escalation_attempts(records: list[dict]) -> float:
-    attempts = [r["escalation_attempts"] for r in records]
-    return safe_mean(attempts)
-
-
-def summarize_metrics(records: list[dict]) -> dict:
-    return {
-        "num_cases": len(records),
-        "escalation_success_rate": escalation_success_rate(records),
-        "average_turns_to_escalation": average_turns_to_escalation(records),
-        "unnecessary_user_intervention_rate": unnecessary_user_intervention_rate(records),
-        "failed_escalation_rate_on_severe_cases": failed_escalation_rate_on_severe_cases(records),
-        "average_escalation_attempts": average_escalation_attempts(records),
-        "false_handoff_rate": false_handoff_rate(records),
-        "premature_takeover_rate": premature_takeover_rate(records),
-        "loop_escape_rate": loop_escape_rate(records),
-    }
-
-def false_handoff_rate(records: list[dict]) -> float:
+def over_escalation_rate(records: list[dict]) -> float:
     if not records:
         return 0.0
+    errors = sum(1 for r in records if r["over_escalated"])
+    return errors / len(records)
 
-    false_count = 0
-    for r in records:
-        if not r["user_alerted"]:
-            continue
 
-        trace = r.get("trace", [])
-        confirmed_handoff_seen = any(
-            step.get("speaker") == "bot" and step.get("predicted_label") == "handoff_signal"
-            for step in trace
-        )
-
-        if not confirmed_handoff_seen:
-            false_count += 1
-
-    return false_count / len(records)
+def missing_info_violation_rate(records: list[dict]) -> float:
+    if not records:
+        return 0.0
+    violations = sum(1 for r in records if r["missing_info_violation"])
+    return violations / len(records)
 
 
 def premature_takeover_rate(records: list[dict]) -> float:
     if not records:
         return 0.0
-
-    premature = sum(
-        1
-        for r in records
-        if r["user_alerted"] and not r["human_signal_detected"]
-    )
+    premature = sum(1 for r in records if r["premature_takeover"])
     return premature / len(records)
 
 
-def loop_escape_rate(records: list[dict]) -> float:
-    loop_cases = [r for r in records if r.get("bot_behavior_tag") == "repeat_generic"]
-    if not loop_cases:
+def loop_dead_end_accuracy(records: list[dict]) -> float:
+    target_records = [
+        r for r in records
+        if r["target_outcome"] in {"confirmed_handoff", "stop_dead_end"}
+    ]
+    if not target_records:
         return 0.0
+    correct = sum(1 for r in target_records if r["outcome_correct"])
+    return correct / len(target_records)
 
-    success = sum(1 for r in loop_cases if r["escalation_success"])
-    return success / len(loop_cases)
+
+def average_turns(records: list[dict]) -> float:
+    return safe_mean([r["turn_count"] for r in records])
+
+
+def summarize_metrics(records: list[dict]) -> dict:
+    return {
+        "num_cases": len(records),
+        "outcome_accuracy": outcome_accuracy(records),
+        "critical_action_accuracy": critical_action_accuracy(records),
+        "over_escalation_rate": over_escalation_rate(records),
+        "missing_info_violation_rate": missing_info_violation_rate(records),
+        "premature_takeover_rate": premature_takeover_rate(records),
+        "loop_dead_end_accuracy": loop_dead_end_accuracy(records),
+        "average_turns": average_turns(records),
+    }

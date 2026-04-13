@@ -61,10 +61,93 @@ def update_state_for_non_verified_agent(state, bot_message: str, bot_gold_label:
     if handoff_signal or bot_gold_label == "handoff_signal":
         state.human_signal_detected = True
 
-    # non-verified agents do not use explicit loop reasoning
     state.loop_score = 0.0
     return bot_gold_label, False, handoff_signal, False, 0.0
 
+def evaluate_case_outcome(case: Case, state, trace: list[dict]) -> dict:
+    user_actions = [
+        step["action"]
+        for step in trace
+        if step["speaker"] == "user_agent"
+    ]
+
+    first_user_action = user_actions[0] if user_actions else None
+    second_user_action = user_actions[1] if len(user_actions) > 1 else None
+
+    outcome_correct = False
+    critical_action_correct = False
+
+    if case.target_outcome == "confirmed_handoff":
+        outcome_correct = state.human_signal_detected
+        critical_action_correct = (
+            first_user_action == case.gold_next_action_sequence[0]
+            if case.gold_next_action_sequence
+            else False
+        )
+
+    elif case.target_outcome == "continue_self_serve":
+        outcome_correct = (
+            not state.human_signal_detected
+            and not state.user_alerted
+            and all(action != "push_for_human" for action in user_actions)
+        )
+
+        # The critical decision happens after the bot provides a self-serve solution,
+        # so use the second user action if available.
+        expected = "continue"
+        critical_action_correct = (second_user_action == expected)
+
+    elif case.target_outcome == "request_more_info":
+        outcome_correct = (second_user_action == "request_more_info")
+
+        # The critical decision happens after the bot asks for missing info,
+        # so use the second user action.
+        critical_action_correct = (second_user_action == "request_more_info")
+
+    elif case.target_outcome == "alert_user_takeover":
+        outcome_correct = state.user_alerted
+        critical_action_correct = (second_user_action == "alert_user_takeover")
+
+    elif case.target_outcome == "stop_dead_end":
+        outcome_correct = any(
+            step.get("action") == "stop_dead_end"
+            for step in trace
+            if step["speaker"] == "user_agent"
+        )
+
+        # Dead-end stopping is typically a later critical decision,
+        # so use whether stop_dead_end ever appears.
+        critical_action_correct = any(
+            step.get("action") == "stop_dead_end"
+            for step in trace
+            if step["speaker"] == "user_agent"
+        )
+
+    over_escalated = (
+        case.target_outcome in {"continue_self_serve", "request_more_info"}
+        and any(
+            step.get("action") == "push_for_human"
+            for step in trace
+            if step["speaker"] == "user_agent"
+        )
+    )
+
+    missing_info_violation = (
+        case.target_outcome == "request_more_info"
+        and second_user_action != "request_more_info"
+    )
+
+    premature_takeover = (
+        state.user_alerted and not state.human_signal_detected
+    )
+
+    return {
+        "outcome_correct": outcome_correct,
+        "critical_action_correct": critical_action_correct,
+        "over_escalated": over_escalated,
+        "missing_info_violation": missing_info_violation,
+        "premature_takeover": premature_takeover,
+    }
 
 def run_case_with_agent(case: Case, agent_name: str, agent) -> dict:
     simulator = CustomerServiceSimulator()
@@ -92,8 +175,9 @@ def run_case_with_agent(case: Case, agent_name: str, agent) -> dict:
             }
         )
 
-        if action == "alert_user_takeover":
-            state.user_alerted = True
+        if action in {"alert_user_takeover", "request_more_info", "stop_dead_end"}:
+            if action == "alert_user_takeover":
+                state.user_alerted = True
             done = True
             break
 
@@ -128,6 +212,8 @@ def run_case_with_agent(case: Case, agent_name: str, agent) -> dict:
         if response.done:
             done = True
 
+    eval_result = evaluate_case_outcome(case, state, trace)
+
     record = {
         "agent_name": agent_name,
         "case_id": case.case_id,
@@ -135,15 +221,15 @@ def run_case_with_agent(case: Case, agent_name: str, agent) -> dict:
         "severity": case.severity,
         "difficulty": case.difficulty,
         "bot_behavior_tag": case.bot_behavior_tag,
-        "bot_profile": case.bot_profile,
+        "target_outcome": case.target_outcome,
         "turn_count": state.turn_count,
         "last_bot_label": state.last_bot_label,
         "human_signal_detected": state.human_signal_detected,
         "user_alerted": state.user_alerted,
         "escalation_attempts": state.escalation_attempts,
         "loop_score": state.loop_score,
-        "escalation_success": state.human_signal_detected,
         "trace": trace,
+        **eval_result,
     }
 
     return record
@@ -173,10 +259,9 @@ def main():
 
             print(
                 f"{agent_name:>8} | case={record['case_id']} | "
-                f"success={record['escalation_success']} | "
-                f"turns={record['turn_count']} | "
-                f"user_alerted={record['user_alerted']} | "
-                f"human_signal_detected={record['human_signal_detected']}"
+                f"target={record['target_outcome']} | "
+                f"outcome_correct={record['outcome_correct']} | "
+                f"critical_action_correct={record['critical_action_correct']}"
             )
 
         metrics = summarize_metrics(records)

@@ -10,14 +10,18 @@ BotLabel = Literal[
     "handoff_offer",
     "handoff_signal",
     "human_present",
+    "self_serve_solution",
+    "dead_end",
 ]
 
 
 AgentAction = Literal[
     "continue",
     "rephrase",
+    "request_more_info",
     "push_for_human",
     "alert_user_takeover",
+    "stop_dead_end",
 ]
 
 
@@ -28,8 +32,18 @@ BotBehaviorTag = Literal[
     "clean_handoff",
     "ambiguous_offer",
     "repeat_generic",
-    "false_progress",
-    "delayed_handoff",
+    "self_serve_success",
+    "missing_info_first",
+    "dead_end_loop",
+]
+
+
+TargetOutcome = Literal[
+    "confirmed_handoff",
+    "continue_self_serve",
+    "request_more_info",
+    "alert_user_takeover",
+    "stop_dead_end",
 ]
 
 
@@ -40,11 +54,17 @@ class Case(BaseModel):
     user_goal: Literal["reach_human"]
     initial_user_message: str
     bot_profile: Literal["cooperative", "deflective"]
-    success_condition: Literal["handoff_signal_detected"]
+    success_condition: str
     max_turns: int = Field(ge=1, le=10)
 
     difficulty: DifficultyLevel
     bot_behavior_tag: BotBehaviorTag
+
+    target_outcome: TargetOutcome
+    success_criteria: str
+    required_agent_capability: str
+    gold_next_action_sequence: list[AgentAction]
+    penalty_type: str
 
 
 class TurnRecord(BaseModel):
@@ -73,13 +93,6 @@ class ConversationState(BaseModel):
 
 class SimulatorResponse(BaseModel):
     bot_message: str
-    bot_gold_label: Literal[
-        "understood_actionable",
-        "misunderstood_issue",
-        "generic_template",
-        "request_more_info",
-        "handoff_signal",
-        "human_present",
-    ]
+    bot_gold_label: BotLabel
     handoff_signal: bool = False
     done: bool = False

@@ -83,6 +83,8 @@ class ConversationState(BaseModel):
     turn_count: int = 0
     last_bot_label: Optional[BotLabel] = None
 
+    bot_mode: Optional[Literal["handoff_confirmed", "helpful", "blocking"]] = None
+
     loop_score: float = Field(default=0.0, ge=0.0, le=1.0)
     escalation_attempts: int = 0
     human_signal_detected: bool = False

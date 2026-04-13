@@ -11,9 +11,9 @@
   },
   "stateful": {
     "num_cases": 12,
-    "outcome_accuracy": 0.5,
+    "outcome_accuracy": 0.75,
     "critical_action_accuracy": 0.5,
-    "over_escalation_rate": 0.4166666666666667,
+    "over_escalation_rate": 0.0,
     "missing_info_violation_rate": 0.16666666666666666,
     "premature_takeover_rate": 0.0,
     "loop_dead_end_accuracy": 0.8571428571428571,

@@ -10,7 +10,7 @@ class StatefulAgentWithoutVerification:
     - severity
     - escalation attempts
     - confirmed human handoff state
-    - a small subset of coarse bot labels
+    - a coarse bot mode
 
     It does NOT rely on rich semantic labels such as:
     - self_serve_solution
@@ -32,22 +32,42 @@ class StatefulAgentWithoutVerification:
         - action_name
         """
 
-        # First turn: present the original issue clearly.
+        # First turn
         if state.turn_count == 0:
             return case.initial_user_message, "continue"
 
         # [MODIFIED]
-        # Only react to a confirmed handoff signal.
-        # This is a coarse and reasonable state cue.
-        if state.human_signal_detected or state.last_bot_label == "handoff_signal":
+        # If a confirmed human handoff has already been detected,
+        # let the user take over.
+        if state.human_signal_detected or state.bot_mode == "handoff_confirmed":
             return (
                 "A human agent is joining now. Please take over the conversation.",
                 "alert_user_takeover",
             )
 
         # [MODIFIED]
-        # Use only coarse bot categories for escalation behavior.
-        if state.last_bot_label in {"generic_template", "misunderstood_issue"}:
+        # Helpful bot mode means the bot is at least providing
+        # something useful-looking. The stateful baseline becomes
+        # slightly less aggressive than the static baseline here,
+        # but it still does not know whether this is self-serve,
+        # missing-info, or another finer-grained category.
+        if state.bot_mode == "helpful":
+            if state.escalation_attempts == 0:
+                return (
+                    "Thank you. Please continue helping with this issue, "
+                    "or connect me to a human representative if needed.",
+                    "rephrase",
+                )
+
+            return (
+                "Please connect me to a human representative.",
+                "push_for_human",
+            )
+
+        # [MODIFIED]
+        # Blocking bot mode means the conversation is not productively moving.
+        # Here the stateful baseline becomes more aggressive.
+        if state.bot_mode == "blocking":
             if case.severity == "high":
                 if state.escalation_attempts == 0:
                     return (
@@ -87,26 +107,7 @@ class StatefulAgentWithoutVerification:
                 "alert_user_takeover",
             )
 
-        # [MODIFIED]
-        # If the bot seems generally helpful, move one step toward escalation,
-        # but do not try to interpret richer meanings like self-serve or missing-info.
-        if state.last_bot_label == "understood_actionable":
-            return (
-                "Thank you. Please connect me to a human representative if this cannot be resolved here.",
-                "push_for_human",
-            )
-
-        # [MODIFIED]
-        # Deliberately do NOT special-case:
-        # - request_more_info
-        # - self_serve_solution
-        # - dead_end
-        # - handoff_offer
-        #
-        # Those richer distinctions belong to the verified agent.
-        # This keeps the stateful baseline meaningfully weaker.
-
-        # Safe fallback.
+        # Safe fallback
         return (
             "Please connect me to a human representative.",
             "push_for_human",

@@ -38,6 +38,21 @@ def build_agents() -> dict:
         "verified": VerifiedAgent(),
     }
 
+def map_label_to_bot_mode(label: str | None) -> str | None:
+    """
+    Maps a rich bot label into a much coarser abstraction
+    for the stateful middle baseline.
+    """
+    if label == "handoff_signal":
+        return "handoff_confirmed"
+
+    if label in {"understood_actionable", "request_more_info", "self_serve_solution"}:
+        return "helpful"
+
+    if label in {"generic_template", "misunderstood_issue", "dead_end", "handoff_offer"}:
+        return "blocking"
+
+    return None
 
 def update_state_for_verified_agent(state, bot_message: str) -> tuple[str, bool, bool, bool, float]:
     predicted_label = classify_bot_response(bot_message)
@@ -45,6 +60,8 @@ def update_state_for_verified_agent(state, bot_message: str) -> tuple[str, bool,
     handoff_signal = detect_handoff_signal(bot_message)
 
     append_bot_turn(state, bot_message, predicted_label)
+
+    state.bot_mode = map_label_to_bot_mode(predicted_label)
 
     is_loop, loop_score = detect_loop_from_history(state.history)
     state.loop_score = loop_score
@@ -57,6 +74,8 @@ def update_state_for_verified_agent(state, bot_message: str) -> tuple[str, bool,
 
 def update_state_for_non_verified_agent(state, bot_message: str, bot_gold_label: str, handoff_signal: bool) -> tuple[str, bool, bool, bool, float]:
     append_bot_turn(state, bot_message, bot_gold_label)
+
+    state.bot_mode = map_label_to_bot_mode(bot_gold_label)
 
     if handoff_signal or bot_gold_label == "handoff_signal":
         state.human_signal_detected = True

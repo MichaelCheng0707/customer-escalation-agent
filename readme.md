@@ -44,6 +44,97 @@ This will generate result files such as:
 - results/eval_results.json
 - results/eval_metrics.json
 
+### 5. Run the visual replay UI
+
+The project also includes a small Streamlit UI for replaying deterministic agent
+simulations step by step.
+
+```bash
+streamlit run src/ui_app.py
+```
+
+If `streamlit` is not available on your shell path, run it through Python:
+
+```bash
+python -m streamlit run src/ui_app.py
+```
+
+If you are using the local virtual environment created during setup:
+
+```bash
+.venv/bin/python -m streamlit run src/ui_app.py
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8501
+```
+
+## Visual Replay UI
+
+The visual replay UI wraps the deterministic simulator and agent loop in an
+interactive web interface. It is designed for inspecting why each agent succeeds or
+fails on a case, not for running a live customer-service system.
+
+### Left panel: settings
+
+The left panel controls the replay:
+
+- choose an agent: `static`, `stateful`, or `verified`
+- choose a benchmark case
+- choose playback speed
+- use `Play`, `Pause`, `Next Step`, and `Reset`
+
+Changing the selected agent or case resets the replay.
+
+### Middle panel: conversation
+
+The middle panel shows the conversation like a chat transcript.
+
+It displays:
+
+- the user-agent message
+- the customer-service simulator reply
+- the action taken by the agent
+- the predicted and gold bot labels for bot turns
+
+When playback is running, the transcript advances one step at a time with a short
+pause between steps.
+
+### Right panel: debug state
+
+The right panel shows structured information for the currently visible step.
+
+It includes:
+
+- `action`
+- `predicted_label`
+- `gold_label`
+- `handoff_signal`
+- `handoff_offer`
+- `loop`
+- `loop_score`
+- `human_signal_detected`
+- `user_alerted`
+- `escalation_attempts`
+
+These fields make it easier to see how the agent's decision relates to the
+classifier, handoff detector, loop detector, and conversation state.
+
+### Final summary
+
+The bottom summary shows the final evaluation outcome for the selected agent-case
+pair:
+
+- `outcome_correct`
+- `over_escalated`
+- `missing_info_violation`
+- `premature_takeover`
+
+This lets you compare the step-by-step behavior against the benchmark's final
+judgment.
+
 ## Project Phase
 
 <details> <summary><strong>Phase 1: System Skeleton and Customer-Service Simulator</strong></summary>

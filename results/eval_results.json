@@ -12,7 +12,7 @@
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 1,
+      "escalation_attempts": 2,
       "loop_score": 0.0,
       "trace": [
         {
@@ -50,10 +50,18 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": true,
-      "critical_action_correct": true,
+      "outcome_correct": false,
+      "critical_action_correct": false,
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
@@ -70,7 +78,7 @@
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 2,
+      "escalation_attempts": 3,
       "loop_score": 0.0,
       "trace": [
         {
@@ -126,10 +134,18 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": true,
-      "critical_action_correct": true,
+      "outcome_correct": false,
+      "critical_action_correct": false,
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
@@ -146,7 +162,7 @@
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 3,
+      "escalation_attempts": 4,
       "loop_score": 0.0,
       "trace": [
         {
@@ -220,10 +236,18 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 4,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": true,
-      "critical_action_correct": true,
+      "outcome_correct": false,
+      "critical_action_correct": false,
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
@@ -298,7 +322,7 @@
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 1,
+      "escalation_attempts": 2,
       "loop_score": 0.0,
       "trace": [
         {
@@ -336,10 +360,18 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": true,
-      "critical_action_correct": true,
+      "outcome_correct": false,
+      "critical_action_correct": false,
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
@@ -356,7 +388,7 @@
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 2,
+      "escalation_attempts": 3,
       "loop_score": 0.0,
       "trace": [
         {
@@ -412,10 +444,18 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": true,
-      "critical_action_correct": true,
+      "outcome_correct": false,
+      "critical_action_correct": false,
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
@@ -548,7 +588,7 @@
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 1,
+      "escalation_attempts": 2,
       "loop_score": 0.0,
       "trace": [
         {
@@ -586,10 +626,18 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": true,
-      "critical_action_correct": true,
+      "outcome_correct": false,
+      "critical_action_correct": false,
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
@@ -1344,7 +1392,7 @@
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 2,
+      "escalation_attempts": 3,
       "loop_score": 0.0,
       "trace": [
         {
@@ -1400,10 +1448,18 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": true,
-      "critical_action_correct": true,
+      "outcome_correct": false,
+      "critical_action_correct": false,
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
@@ -1420,7 +1476,7 @@
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
       "user_alerted": false,
-      "escalation_attempts": 2,
+      "escalation_attempts": 3,
       "loop_score": 0.0,
       "trace": [
         {
@@ -1476,10 +1532,18 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "Please connect me to a live agent now.",
+          "action": "push_for_human",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 3,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": true,
-      "critical_action_correct": true,
+      "outcome_correct": false,
+      "critical_action_correct": false,
       "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
@@ -1497,7 +1561,7 @@
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 0,
       "loop_score": 0.0,
       "trace": [
@@ -1536,6 +1600,14 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -1555,7 +1627,7 @@
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 1,
       "loop_score": 0.0,
       "trace": [
@@ -1612,6 +1684,14 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -1631,7 +1711,7 @@
       "turn_count": 4,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 1,
       "loop_score": 0.0,
       "trace": [
@@ -1705,6 +1785,14 @@
           "handoff_offer": false,
           "handoff_signal": true,
           "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 1,
           "loop_score": 0.0
         }
       ],
@@ -1783,7 +1871,7 @@
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 0,
       "loop_score": 0.0,
       "trace": [
@@ -1822,6 +1910,14 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 0,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -1841,7 +1937,7 @@
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 1,
       "loop_score": 0.0,
       "trace": [
@@ -1897,6 +1993,14 @@
           "handoff_offer": false,
           "handoff_signal": true,
           "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
           "loop_score": 0.0
         }
       ],
@@ -2033,7 +2137,7 @@
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 0,
       "loop_score": 0.0,
       "trace": [
@@ -2071,6 +2175,14 @@
           "handoff_offer": false,
           "handoff_signal": true,
           "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 0,
           "loop_score": 0.0
         }
       ],
@@ -2829,7 +2941,7 @@
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 1,
       "loop_score": 0.0,
       "trace": [
@@ -2886,6 +2998,14 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -2905,7 +3025,7 @@
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 1,
       "loop_score": 0.0,
       "trace": [
@@ -2961,6 +3081,14 @@
           "handoff_offer": false,
           "handoff_signal": true,
           "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 1,
           "loop_score": 0.0
         }
       ],
@@ -2983,7 +3111,7 @@
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 1,
       "loop_score": 0.0,
       "trace": [
@@ -3022,6 +3150,14 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -3041,7 +3177,7 @@
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 2,
       "loop_score": 0.0,
       "trace": [
@@ -3098,6 +3234,14 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -3117,7 +3261,7 @@
       "turn_count": 4,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 3,
       "loop_score": 0.0,
       "trace": [
@@ -3191,6 +3335,14 @@
           "handoff_offer": false,
           "handoff_signal": true,
           "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 4,
+          "escalation_attempts": 3,
           "loop_score": 0.0
         }
       ],
@@ -3269,7 +3421,7 @@
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 1,
       "loop_score": 0.0,
       "trace": [
@@ -3308,6 +3460,14 @@
           "handoff_signal": true,
           "loop": false,
           "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -3327,7 +3487,7 @@
       "turn_count": 3,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 2,
       "loop_score": 0.0,
       "trace": [
@@ -3383,6 +3543,14 @@
           "handoff_offer": false,
           "handoff_signal": true,
           "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 2,
           "loop_score": 0.0
         }
       ],
@@ -3509,7 +3677,7 @@
       "turn_count": 2,
       "last_bot_label": "handoff_signal",
       "human_signal_detected": true,
-      "user_alerted": false,
+      "user_alerted": true,
       "escalation_attempts": 1,
       "loop_score": 0.0,
       "trace": [
@@ -3547,6 +3715,14 @@
           "handoff_offer": false,
           "handoff_signal": true,
           "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
           "loop_score": 0.0
         }
       ],
@@ -3755,11 +3931,11 @@
       "bot_behavior_tag": "self_serve_success_alt1",
       "target_outcome": "continue_self_serve",
       "turn_count": 2,
-      "last_bot_label": "generic_template",
+      "last_bot_label": "self_serve_solution",
       "human_signal_detected": false,
       "user_alerted": false,
-      "escalation_attempts": 1,
-      "loop_score": 1.0,
+      "escalation_attempts": 0,
+      "loop_score": 0.0,
       "trace": [
         {
           "speaker": "user_agent",
@@ -3773,7 +3949,7 @@
           "speaker": "bot",
           "message": "You can check the charge details in your billing history and compare the recent transactions there.",
           "gold_label": "self_serve_solution",
-          "predicted_label": "generic_template",
+          "predicted_label": "self_serve_solution",
           "handoff_offer": false,
           "handoff_signal": false,
           "loop": false,
@@ -3781,26 +3957,26 @@
         },
         {
           "speaker": "user_agent",
-          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
-          "action": "push_for_human",
+          "message": "The bot has already provided a workable path, so escalation is not necessary.",
+          "action": "continue",
           "turn_count_before_bot": 1,
-          "escalation_attempts": 1,
+          "escalation_attempts": 0,
           "loop_score": 0.0
         },
         {
           "speaker": "bot",
           "message": "The billing history page should be enough to clarify this charge without escalation.",
           "gold_label": "self_serve_solution",
-          "predicted_label": "generic_template",
+          "predicted_label": "self_serve_solution",
           "handoff_offer": false,
           "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
+          "loop": false,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": false,
-      "critical_action_correct": false,
-      "over_escalated": true,
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
     },
@@ -3813,11 +3989,11 @@
       "bot_behavior_tag": "self_serve_success_alt2",
       "target_outcome": "continue_self_serve",
       "turn_count": 2,
-      "last_bot_label": "generic_template",
+      "last_bot_label": "self_serve_solution",
       "human_signal_detected": false,
       "user_alerted": false,
-      "escalation_attempts": 1,
-      "loop_score": 1.0,
+      "escalation_attempts": 0,
+      "loop_score": 0.0,
       "trace": [
         {
           "speaker": "user_agent",
@@ -3831,7 +4007,7 @@
           "speaker": "bot",
           "message": "Please use the account recovery page to restore access before contacting support.",
           "gold_label": "self_serve_solution",
-          "predicted_label": "generic_template",
+          "predicted_label": "self_serve_solution",
           "handoff_offer": false,
           "handoff_signal": false,
           "loop": false,
@@ -3839,26 +4015,26 @@
         },
         {
           "speaker": "user_agent",
-          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
-          "action": "push_for_human",
+          "message": "The bot has already provided a workable path, so escalation is not necessary.",
+          "action": "continue",
           "turn_count_before_bot": 1,
-          "escalation_attempts": 1,
+          "escalation_attempts": 0,
           "loop_score": 0.0
         },
         {
           "speaker": "bot",
           "message": "The recovery page should resolve the sign-in problem without escalation.",
           "gold_label": "self_serve_solution",
-          "predicted_label": "generic_template",
+          "predicted_label": "self_serve_solution",
           "handoff_offer": false,
           "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
+          "loop": false,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": false,
-      "critical_action_correct": false,
-      "over_escalated": true,
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
       "missing_info_violation": false,
       "premature_takeover": false
     },
@@ -3918,12 +4094,12 @@
       "difficulty": "medium",
       "bot_behavior_tag": "missing_info_first_alt2",
       "target_outcome": "request_more_info",
-      "turn_count": 2,
-      "last_bot_label": "generic_template",
+      "turn_count": 1,
+      "last_bot_label": "request_more_info",
       "human_signal_detected": false,
       "user_alerted": false,
-      "escalation_attempts": 1,
-      "loop_score": 1.0,
+      "escalation_attempts": 0,
+      "loop_score": 0.0,
       "trace": [
         {
           "speaker": "user_agent",
@@ -3937,7 +4113,7 @@
           "speaker": "bot",
           "message": "I need the email address associated with the account before I can continue.",
           "gold_label": "request_more_info",
-          "predicted_label": "generic_template",
+          "predicted_label": "request_more_info",
           "handoff_offer": false,
           "handoff_signal": false,
           "loop": false,
@@ -3945,27 +4121,17 @@
         },
         {
           "speaker": "user_agent",
-          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
-          "action": "push_for_human",
+          "message": "I need more information from the user before I can continue.",
+          "action": "request_more_info",
           "turn_count_before_bot": 1,
-          "escalation_attempts": 1,
+          "escalation_attempts": 0,
           "loop_score": 0.0
-        },
-        {
-          "speaker": "bot",
-          "message": "I still need the account email or identity details before I can proceed.",
-          "gold_label": "request_more_info",
-          "predicted_label": "generic_template",
-          "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
         }
       ],
-      "outcome_correct": false,
-      "critical_action_correct": false,
-      "over_escalated": true,
-      "missing_info_violation": true,
+      "outcome_correct": true,
+      "critical_action_correct": true,
+      "over_escalated": false,
+      "missing_info_violation": false,
       "premature_takeover": false
     },
     {
@@ -3976,12 +4142,12 @@
       "difficulty": "hard",
       "bot_behavior_tag": "dead_end_loop_alt1",
       "target_outcome": "stop_dead_end",
-      "turn_count": 4,
-      "last_bot_label": "generic_template",
+      "turn_count": 2,
+      "last_bot_label": "dead_end",
       "human_signal_detected": false,
       "user_alerted": false,
-      "escalation_attempts": 3,
-      "loop_score": 1.0,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
       "trace": [
         {
           "speaker": "user_agent",
@@ -4013,55 +4179,19 @@
           "speaker": "bot",
           "message": "Support escalation is unavailable through this workflow.",
           "gold_label": "dead_end",
-          "predicted_label": "generic_template",
+          "predicted_label": "dead_end",
           "handoff_offer": false,
           "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
-        },
-        {
-          "speaker": "user_agent",
-          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
-          "action": "push_for_human",
-          "turn_count_before_bot": 2,
-          "escalation_attempts": 2,
-          "loop_score": 1.0
-        },
-        {
-          "speaker": "bot",
-          "message": "This workflow cannot provide any further escalation path.",
-          "gold_label": "dead_end",
-          "predicted_label": "generic_template",
-          "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
-        },
-        {
-          "speaker": "user_agent",
-          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
-          "action": "push_for_human",
-          "turn_count_before_bot": 3,
-          "escalation_attempts": 3,
-          "loop_score": 1.0
-        },
-        {
-          "speaker": "bot",
-          "message": "This workflow cannot provide any further escalation path.",
-          "gold_label": "dead_end",
-          "predicted_label": "generic_template",
-          "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
+          "loop": false,
+          "loop_score": 0.0
         },
         {
           "speaker": "user_agent",
           "message": "This conversation has reached a dead end. Please stop this channel and take over manually if needed.",
           "action": "stop_dead_end",
-          "turn_count_before_bot": 4,
-          "escalation_attempts": 3,
-          "loop_score": 1.0
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -4078,12 +4208,12 @@
       "difficulty": "hard",
       "bot_behavior_tag": "dead_end_loop_alt2",
       "target_outcome": "stop_dead_end",
-      "turn_count": 4,
-      "last_bot_label": "generic_template",
+      "turn_count": 2,
+      "last_bot_label": "dead_end",
       "human_signal_detected": false,
       "user_alerted": false,
-      "escalation_attempts": 3,
-      "loop_score": 1.0,
+      "escalation_attempts": 1,
+      "loop_score": 0.0,
       "trace": [
         {
           "speaker": "user_agent",
@@ -4115,55 +4245,19 @@
           "speaker": "bot",
           "message": "This automated channel cannot resolve the issue further.",
           "gold_label": "dead_end",
-          "predicted_label": "generic_template",
+          "predicted_label": "dead_end",
           "handoff_offer": false,
           "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
-        },
-        {
-          "speaker": "user_agent",
-          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
-          "action": "push_for_human",
-          "turn_count_before_bot": 2,
-          "escalation_attempts": 2,
-          "loop_score": 1.0
-        },
-        {
-          "speaker": "bot",
-          "message": "No additional progress can be made in this automated support flow.",
-          "gold_label": "dead_end",
-          "predicted_label": "generic_template",
-          "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
-        },
-        {
-          "speaker": "user_agent",
-          "message": "The automated guidance is not solving the problem. Please connect me to a human representative.",
-          "action": "push_for_human",
-          "turn_count_before_bot": 3,
-          "escalation_attempts": 3,
-          "loop_score": 1.0
-        },
-        {
-          "speaker": "bot",
-          "message": "No additional progress can be made in this automated support flow.",
-          "gold_label": "dead_end",
-          "predicted_label": "generic_template",
-          "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
+          "loop": false,
+          "loop_score": 0.0
         },
         {
           "speaker": "user_agent",
           "message": "This conversation has reached a dead end. Please stop this channel and take over manually if needed.",
           "action": "stop_dead_end",
-          "turn_count_before_bot": 4,
-          "escalation_attempts": 3,
-          "loop_score": 1.0
+          "turn_count_before_bot": 2,
+          "escalation_attempts": 1,
+          "loop_score": 0.0
         }
       ],
       "outcome_correct": true,
@@ -4181,11 +4275,11 @@
       "bot_behavior_tag": "ambiguous_offer_alt1",
       "target_outcome": "confirmed_handoff",
       "turn_count": 3,
-      "last_bot_label": "generic_template",
-      "human_signal_detected": false,
-      "user_alerted": false,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": true,
       "escalation_attempts": 2,
-      "loop_score": 1.0,
+      "loop_score": 0.0,
       "trace": [
         {
           "speaker": "user_agent",
@@ -4235,14 +4329,22 @@
           "speaker": "bot",
           "message": "I’m transferring you to a live billing representative now.",
           "gold_label": "handoff_signal",
-          "predicted_label": "generic_template",
+          "predicted_label": "handoff_signal",
           "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": false,
+      "outcome_correct": true,
       "critical_action_correct": true,
       "over_escalated": false,
       "missing_info_violation": false,
@@ -4257,11 +4359,11 @@
       "bot_behavior_tag": "ambiguous_offer_alt2",
       "target_outcome": "confirmed_handoff",
       "turn_count": 3,
-      "last_bot_label": "generic_template",
-      "human_signal_detected": false,
-      "user_alerted": false,
+      "last_bot_label": "handoff_signal",
+      "human_signal_detected": true,
+      "user_alerted": true,
       "escalation_attempts": 2,
-      "loop_score": 1.0,
+      "loop_score": 0.0,
       "trace": [
         {
           "speaker": "user_agent",
@@ -4311,14 +4413,22 @@
           "speaker": "bot",
           "message": "I’m transferring you to a live support representative now.",
           "gold_label": "handoff_signal",
-          "predicted_label": "generic_template",
+          "predicted_label": "handoff_signal",
           "handoff_offer": false,
-          "handoff_signal": false,
-          "loop": true,
-          "loop_score": 1.0
+          "handoff_signal": true,
+          "loop": false,
+          "loop_score": 0.0
+        },
+        {
+          "speaker": "user_agent",
+          "message": "A human agent is joining now. Please take over the conversation.",
+          "action": "alert_user_takeover",
+          "turn_count_before_bot": 3,
+          "escalation_attempts": 2,
+          "loop_score": 0.0
         }
       ],
-      "outcome_correct": false,
+      "outcome_correct": true,
       "critical_action_correct": true,
       "over_escalated": false,
       "missing_info_violation": false,

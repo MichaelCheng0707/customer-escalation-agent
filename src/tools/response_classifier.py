@@ -27,9 +27,14 @@ def classify_bot_response(bot_message: str) -> str:
         "you can review the full billing breakdown",
         "you can use the order tracking link",
         "you can reset your password through the secure recovery flow",
+        "you can check the charge details in your billing history",
+        "please use the account recovery page",
+        "the billing history page should be enough",
+        "the recovery page should resolve",
         "the self-serve path i provided should be enough",
         "resolve this without escalation",
         "that should resolve the issue without escalation",
+        "without escalation",
     ]
     if any(pattern in text for pattern in self_serve_solution_patterns):
         return "self_serve_solution"
@@ -45,6 +50,9 @@ def classify_bot_response(bot_message: str) -> str:
         "i need the order number before i can proceed",
         "i need more account or identity details before i can proceed",
         "i still need the missing information before i can continue",
+        "i need the email address associated with the account before i can continue",
+        "i still need the account email or identity details before i can proceed",
+        "i still need the order identifier or shipping information before i can proceed",
         "i need more information before i can proceed",
         "i need more details before i can proceed",
     ]
@@ -58,6 +66,10 @@ def classify_bot_response(bot_message: str) -> str:
         "no further progress can be made through this channel",
         "no further escalation options are available through this channel",
         "at this time, no further escalation options are available",
+        "support escalation is unavailable through this workflow",
+        "this workflow cannot provide any further escalation path",
+        "this automated channel cannot resolve the issue further",
+        "no additional progress can be made in this automated support flow",
     ]
     if any(pattern in text for pattern in dead_end_patterns):
         return "dead_end"

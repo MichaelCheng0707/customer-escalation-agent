@@ -1,32 +1,68 @@
 {
   "static": {
     "num_cases": 20,
-    "outcome_accuracy": 0.4,
-    "critical_action_accuracy": 0.4,
-    "over_escalation_rate": 0.45,
-    "missing_info_violation_rate": 0.2,
+    "target_case_counts": {
+      "confirmed_handoff": 8,
+      "continue_self_serve": 5,
+      "request_more_info": 4,
+      "stop_dead_end": 3
+    },
+    "outcome_accuracy": 0.0,
+    "critical_action_accuracy": 0.0,
+    "handoff_reached_rate": 1.0,
+    "handoff_takeover_rate": 0.0,
+    "self_serve_accuracy": 0.0,
+    "self_serve_critical_action_accuracy": 0.0,
+    "missing_info_accuracy": 0.0,
+    "dead_end_stop_rate": 0.0,
+    "over_escalation_rate": 1.0,
+    "missing_info_violation_rate": 1.0,
     "premature_takeover_rate": 0.0,
-    "loop_dead_end_accuracy": 0.7272727272727273,
+    "loop_dead_end_accuracy": 0.0,
     "average_turns": 2.9
   },
   "stateful": {
     "num_cases": 20,
+    "target_case_counts": {
+      "confirmed_handoff": 8,
+      "continue_self_serve": 5,
+      "request_more_info": 4,
+      "stop_dead_end": 3
+    },
     "outcome_accuracy": 0.65,
     "critical_action_accuracy": 0.4,
+    "handoff_reached_rate": 1.0,
+    "handoff_takeover_rate": 1.0,
+    "self_serve_accuracy": 1.0,
+    "self_serve_critical_action_accuracy": 0.0,
+    "missing_info_accuracy": 0.0,
+    "dead_end_stop_rate": 0.0,
     "over_escalation_rate": 0.0,
-    "missing_info_violation_rate": 0.2,
+    "missing_info_violation_rate": 1.0,
     "premature_takeover_rate": 0.0,
     "loop_dead_end_accuracy": 0.7272727272727273,
     "average_turns": 2.9
   },
   "verified": {
     "num_cases": 20,
-    "outcome_accuracy": 0.75,
-    "critical_action_accuracy": 0.85,
-    "over_escalation_rate": 0.15,
-    "missing_info_violation_rate": 0.05,
+    "target_case_counts": {
+      "confirmed_handoff": 8,
+      "continue_self_serve": 5,
+      "request_more_info": 4,
+      "stop_dead_end": 3
+    },
+    "outcome_accuracy": 1.0,
+    "critical_action_accuracy": 1.0,
+    "handoff_reached_rate": 1.0,
+    "handoff_takeover_rate": 1.0,
+    "self_serve_accuracy": 1.0,
+    "self_serve_critical_action_accuracy": 1.0,
+    "missing_info_accuracy": 1.0,
+    "dead_end_stop_rate": 1.0,
+    "over_escalation_rate": 0.0,
+    "missing_info_violation_rate": 0.0,
     "premature_takeover_rate": 0.0,
-    "loop_dead_end_accuracy": 0.8181818181818182,
-    "average_turns": 2.4
+    "loop_dead_end_accuracy": 1.0,
+    "average_turns": 2.15
   }
 }

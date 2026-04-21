@@ -97,11 +97,10 @@ def evaluate_case_outcome(case: Case, state, trace: list[dict]) -> dict:
     critical_action_correct = False
 
     if case.target_outcome == "confirmed_handoff":
-        outcome_correct = state.human_signal_detected
+        outcome_correct = state.human_signal_detected and state.user_alerted
         critical_action_correct = (
-            first_user_action == case.gold_next_action_sequence[0]
-            if case.gold_next_action_sequence
-            else False
+            "alert_user_takeover" in user_actions
+            and user_actions[-1] == "alert_user_takeover"
         )
 
     elif case.target_outcome == "continue_self_serve":
@@ -200,6 +199,10 @@ def run_case_with_agent(case: Case, agent_name: str, agent) -> dict:
             done = True
             break
 
+        if state.human_signal_detected:
+            done = True
+            break
+
         response = simulator.step(
             case=case,
             conversation_state=state,
@@ -228,7 +231,7 @@ def run_case_with_agent(case: Case, agent_name: str, agent) -> dict:
             }
         )
 
-        if response.done:
+        if response.done and not state.human_signal_detected:
             done = True
 
     eval_result = evaluate_case_outcome(case, state, trace)

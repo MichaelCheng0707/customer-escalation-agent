@@ -1,11 +1,18 @@
+import os
 import time
 
 import streamlit as st
+from dotenv import load_dotenv
 
-from src.evaluation.run_eval import build_agents, load_cases, run_case_with_agent
+from src.evaluation.run_eval import build_agents, load_cases
+from src.replay import load_case_by_id, run_case_replay
 
 
 CASES_PATH = "data/cases.json"
+GPT_BACKEND_MODES = ["scripted", "gpt"]
+GPT_PERSONAS = ["cooperative"]
+
+load_dotenv()
 
 
 @st.cache_data
@@ -14,11 +21,13 @@ def cached_cases():
 
 
 @st.cache_data
-def cached_record(agent_name: str, case_id: str) -> dict:
-    cases = cached_cases()
-    case = next(case for case in cases if case.case_id == case_id)
-    agent = build_agents()[agent_name]
-    return run_case_with_agent(case, agent_name, agent)
+def cached_scripted_record(agent_name: str, case_id: str) -> dict:
+    case = load_case_by_id(case_id)
+    return run_case_replay(case=case, agent_name=agent_name, backend_mode="scripted")
+
+
+def gpt_record_state_key(agent_name: str, case_id: str, persona: str, model: str) -> str:
+    return f"gpt::{agent_name}::{case_id}::{persona}::{model}"
 
 
 def init_session() -> None:
@@ -27,16 +36,30 @@ def init_session() -> None:
         "playing": False,
         "last_agent": None,
         "last_case": None,
+        "last_backend_mode": None,
+        "last_persona": None,
+        "last_model": None,
+        "gpt_records": {},
+        "gpt_active_record_key": None,
     }
     for key, value in defaults.items():
         st.session_state.setdefault(key, value)
 
 
-def reset_replay(agent_name: str, case_id: str) -> None:
+def reset_replay(
+    agent_name: str,
+    case_id: str,
+    backend_mode: str,
+    persona: str | None,
+    model: str | None,
+) -> None:
     st.session_state.step_index = 0
     st.session_state.playing = False
     st.session_state.last_agent = agent_name
     st.session_state.last_case = case_id
+    st.session_state.last_backend_mode = backend_mode
+    st.session_state.last_persona = persona
+    st.session_state.last_model = model
 
 
 def visible_steps(trace: list[dict]) -> list[dict]:
@@ -87,15 +110,21 @@ def render_badge(label: str, value) -> None:
 
 
 def render_case_header(record: dict) -> None:
+    details = [
+        f"Case {record['case_id']}",
+        record["issue_type"],
+        f"severity={record['severity']}",
+        f"difficulty={record['difficulty']}",
+        f"target={record['target_outcome']}",
+        f"backend={record.get('backend_mode', 'scripted')}",
+    ]
+    if record.get("gpt_persona"):
+        details.append(f"persona={record['gpt_persona']}")
+    if record.get("gpt_model"):
+        details.append(f"model={record['gpt_model']}")
     st.caption(
         " | ".join(
-            [
-                f"Case {record['case_id']}",
-                record["issue_type"],
-                f"severity={record['severity']}",
-                f"difficulty={record['difficulty']}",
-                f"target={record['target_outcome']}",
-            ]
+            details
         )
     )
 
@@ -119,6 +148,13 @@ def render_chat(trace: list[dict]) -> None:
                 )
 
 
+def render_initial_case_message(case_id: str) -> None:
+    case = load_case_by_id(case_id)
+    with st.chat_message("user"):
+        st.markdown(case.initial_user_message)
+        st.caption("initial case context")
+
+
 def render_debug_panel(trace: list[dict], step: dict | None) -> None:
     st.subheader("Debug")
     if step is None:
@@ -138,6 +174,9 @@ def render_debug_panel(trace: list[dict], step: dict | None) -> None:
     render_badge("human_signal_detected", current_state["human_signal_detected"])
     render_badge("user_alerted", current_state["user_alerted"])
     render_badge("escalation_attempts", current_state["escalation_attempts"])
+    metadata = step.get("backend_metadata")
+    if metadata:
+        render_badge("backend_metadata", metadata)
 
 
 def render_final_summary(record: dict) -> None:
@@ -161,28 +200,61 @@ def main() -> None:
     init_session()
 
     st.title("Escalation Agent Replay")
-    st.caption("Deterministic step-by-step simulation for the static, stateful, and verified agents.")
+    st.caption("Step-by-step replay for scripted and GPT customer-service backends.")
 
     cases = cached_cases()
     case_ids = [case.case_id for case in cases]
     agent_names = list(build_agents().keys())
+    default_model = os.getenv("MODEL_NAME", "gpt-5-mini")
 
     left, middle, right = st.columns([1.0, 2.2, 1.15], gap="large")
 
     with left:
         st.subheader("Settings")
+        backend_mode = st.selectbox("Customer Service Backend", GPT_BACKEND_MODES, index=0)
         agent_name = st.selectbox("Agent", agent_names, index=2)
         case_id = st.selectbox("Case", case_ids)
+        gpt_persona = None
+        gpt_model = None
+        if backend_mode == "gpt":
+            gpt_persona = st.selectbox("GPT Persona", GPT_PERSONAS, index=0)
+            gpt_model = st.text_input("OpenAI Model", value=default_model)
         speed = st.slider("Playback speed", 0.25, 3.0, 1.25, 0.25, help="Seconds between steps.")
 
         if (
             st.session_state.last_agent != agent_name
             or st.session_state.last_case != case_id
+            or st.session_state.last_backend_mode != backend_mode
+            or st.session_state.last_persona != gpt_persona
+            or st.session_state.last_model != gpt_model
         ):
-            reset_replay(agent_name, case_id)
+            reset_replay(agent_name, case_id, backend_mode, gpt_persona, gpt_model)
+            if backend_mode == "gpt":
+                st.session_state.gpt_active_record_key = None
 
-        record = cached_record(agent_name, case_id)
-        trace = record["trace"]
+        if backend_mode == "scripted":
+            record = cached_scripted_record(agent_name, case_id)
+        else:
+            record_key = gpt_record_state_key(agent_name, case_id, gpt_persona or "", gpt_model or "")
+            record = None
+            if st.button("Run the Case", use_container_width=True):
+                with st.spinner("Generating GPT customer service replay..."):
+                    record = run_case_replay(
+                        case=load_case_by_id(case_id),
+                        agent_name=agent_name,
+                        backend_mode="gpt",
+                        gpt_model=gpt_model,
+                        gpt_persona=gpt_persona,
+                    )
+                    st.session_state.gpt_records[record_key] = record
+                    st.session_state.gpt_active_record_key = record_key
+                    st.session_state.step_index = 0
+                    st.session_state.playing = False
+
+            active_key = st.session_state.gpt_active_record_key
+            if active_key == record_key and record_key in st.session_state.gpt_records:
+                record = st.session_state.gpt_records[record_key]
+        trace = record["trace"] if record else []
 
         col_a, col_b = st.columns(2)
         if col_a.button("Play", use_container_width=True):
@@ -195,23 +267,56 @@ def main() -> None:
             st.session_state.playing = False
             st.session_state.step_index = min(st.session_state.step_index + 1, len(trace) - 1)
         if col_d.button("Reset", use_container_width=True):
-            reset_replay(agent_name, case_id)
+            reset_replay(agent_name, case_id, backend_mode, gpt_persona, gpt_model)
 
-        st.progress((st.session_state.step_index + 1) / max(len(trace), 1))
-        st.caption(f"Step {st.session_state.step_index + 1} of {len(trace)}")
+        if backend_mode == "gpt" and record and st.button("Regenerate GPT Replay", use_container_width=True):
+            st.session_state.playing = False
+            if record_key in st.session_state.gpt_records:
+                del st.session_state.gpt_records[record_key]
+            st.session_state.gpt_active_record_key = None
+            reset_replay(agent_name, case_id, backend_mode, gpt_persona, gpt_model)
+            st.rerun()
+
+        st.progress((st.session_state.step_index + 1) / max(len(trace), 1) if trace else 0)
+        st.caption(f"Step {min(st.session_state.step_index + 1, max(len(trace), 1))} of {len(trace)}")
+        if backend_mode == "gpt":
+            if record:
+                st.info("GPT mode is non-deterministic. Replay is fixed only after a trace has been generated.")
+            else:
+                st.info("Adjust the GPT settings, then click `Run the Case` to generate a replay.")
 
     with middle:
-        render_case_header(record)
+        if record:
+            render_case_header(record)
+        else:
+            case = load_case_by_id(case_id)
+            st.caption(
+                " | ".join(
+                    [
+                        f"Case {case.case_id}",
+                        case.issue_type,
+                        f"severity={case.severity}",
+                        f"difficulty={case.difficulty}",
+                        f"target={case.target_outcome}",
+                        f"backend={backend_mode}",
+                    ]
+                )
+            )
         st.subheader("Conversation")
-        render_chat(trace)
+        if record:
+            render_chat(trace)
+        else:
+            render_initial_case_message(case_id)
+            st.info("No GPT replay yet. Click `Run the Case` after choosing the backend, case, persona, and model.")
 
     with right:
         render_debug_panel(trace, current_step(trace))
 
     st.divider()
-    render_final_summary(record)
+    if record:
+        render_final_summary(record)
 
-    if st.session_state.playing:
+    if st.session_state.playing and record:
         if st.session_state.step_index < len(trace) - 1:
             time.sleep(speed)
             st.session_state.step_index += 1

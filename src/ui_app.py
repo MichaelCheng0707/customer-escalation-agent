@@ -10,7 +10,7 @@ from src.replay import load_case_by_id, run_case_replay
 
 CASES_PATH = "data/cases.json"
 GPT_BACKEND_MODES = ["scripted", "gpt"]
-GPT_PERSONAS = ["cooperative"]
+GPT_PERSONAS = ["cooperative", "cooperative_open"]
 
 load_dotenv()
 
